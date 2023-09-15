@@ -1,0 +1,19 @@
+
+
+.items{  
+display: flex;
+}
+.items li{
+  transition: .5s;
+}
+.itemsList a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Jura', sans-serif;
+}
+.itemsList a:hover{
+border-bottom: solid 1px red;
+}
+.itemsList{
+    list-style: none;
+}
