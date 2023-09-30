@@ -2,7 +2,7 @@ import React from 'react';
 
 const SerialsPage = () => {
     return (
-        <div>
+        <div style={{color: "white"}}>
             Serials
         </div>
     );

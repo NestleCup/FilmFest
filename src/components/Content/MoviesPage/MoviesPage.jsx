@@ -1,10 +1,10 @@
 import React from 'react';
-
+import style from "./MoviesPage.module.scss"
 const MoviesPage = () => {
     return (
-        <div>
-            MoviesPage
-        </div>
+        <>
+           <h1 style={{color:"white"}}>MoviesPage</h1> 
+        </>
     );
 };
 

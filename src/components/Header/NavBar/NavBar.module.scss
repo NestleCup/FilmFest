@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  align-items: center;
+
+  .navLink:hover {
+    color: red;
+  }
+
+  .navItems {
+    font-size: 18px;
+  }
+
+  .navLink {
+    transition: .5s;
+    color: white;
+    margin: 6px;
+  }
+
+}

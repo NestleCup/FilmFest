@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap');
+
+* {
+    margin: 0 auto;
+    font-family: 'Jura', sans-serif;
+
+    img {
+        height: auto;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    body {
+        background-color: rgb(20, 15, 15);
+
+        .app-wrapper {
+            background-image: url('./img/bg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+
+            .app-wrapper-content {
+        max-width: 1200px;
+            }
+
+            .app-wrapper-size {
+                max-width: 1600px;
+            }
+        }
+    }
+}

@@ -1,47 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import s from './PageFilm.module.css'
+import style from './ApiFilm.module.scss'
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchFilms } from '../../../store/feature/films/filmsSlice';
 
 function ApiFilms() {
-
-    const baseUrl = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/301'
-    const apiKey = 'c3a27a07-8dbc-4a98-a690-49351cf6df33'
-    const [filmData, setFilmData] = useState([])
+    const dispatch = useDispatch()
+    const topFilms = useSelector(state => state.films.topFilms || [])
+    const [pageNumber, setPageNumber] = useState(1)
 
     useEffect(() => {
-        axios
-            .get(baseUrl, {
-                headers: {
-                    'X-API-KEY': apiKey,
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then((res) => {
-                console.log(res.data);
-                setFilmData(res.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }, []);
+        dispatch(fetchFilms())
+    }, [])
+const ratingStatus = (rating) =>{
 
+}
     return (
-        <div>
-            {/* {filmData.map((films) =>(
-                <div>
-                    <h1 key={films.kinopoiskId}>ittle</h1>
-                    <div className={s.cardBlock}>
-                        <div className={s.filmTitle} >
-                            <h1 className={s.title}>{films.nameRu}</h1>
-                            <p className={s.slogan}>{films.slogan}</p></div>
-                        <div className={s.cardBlockImg}>
-                            <img src={films.posterUrl} alt='ds'></img>
-                        </div>
-                        <div className={s.cardBlockFilter}></div>
+        <div className={style.filmBlock}>
+            {topFilms?.films && topFilms?.films.map(films => (
+                <div key={films.filmId} className={style.filmCard}>
+                    <div className={style.filmCardTitle} >
+                        <span className={style.title}>{films.nameRu}</span>
+                    </div >
+                    <div className={style.filmCardRating}>
+                        <span>{films.rating}</span>
+                    </div>
+                    <div className={style.filmCardImg}>
+                        <img src={films.posterUrl} alt='Poster'></img>
+                    </div>
+                    <div className={style.filmCardBackground}>
                     </div>
                 </div>
-            ))} */}
-        </div>
+
+
+            ))
+            }
+        </div >
     );
 
 }

@@ -1,0 +1,27 @@
+.slideBlock {
+  .slideInfo {
+    color: #fff;
+    position: absolute;
+    bottom: 20px;
+    left: 60px;
+    font-size: 24px;
+
+    .slideTitle {
+      font-size: 34px;
+    }
+  }
+
+  .slideImg {
+    max-width: 300px;
+
+    img {
+      width: 100%;
+      border-radius: 19px;
+    }
+  }
+}
+
+
+
+
+

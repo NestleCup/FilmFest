@@ -1,0 +1,21 @@
+header {
+    .headerFlex {
+        background: rgba(50, 50, 50, 0.21);
+        backdrop-filter: blur(16.5px);
+        height: 60px;
+
+        .headerBlock {
+            display: flex;
+            align-items: center;
+
+            .headerLogo {
+                display: flex;
+                align-items: center;
+            }
+
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+}

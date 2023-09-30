@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Input } from 'antd';
 
-const Search= () => {
-        return (
-            <div>
-                
-            </div>
-        );
+
+
+const Search = () => {
+const [searchText, setSearchText] = useState("")
+    return (
+        <div>
+            <Input.Search placeholder="Поиск . . ." style={{  maxWidth: 300 }} onSearch={(value) => {
+                setSearchText(value)
+            }}
+            ></Input.Search>
+        </div>
+    );
 }
 
 export default Search;

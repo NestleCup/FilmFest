@@ -1,25 +1,32 @@
 import React from 'react';
-import s from './NavBar.module.css'
+import style from './NavBar.module.scss'
+import { NavLink } from 'react-router-dom';
 import { Col, Row } from 'antd';
 const NavBar = () => {
     return (
-        <nav>
-            <ul className={s.items}>
-                <li className={s.itemsList}>
-                    <a href='/main'>Главная </a>
-                </li>
-                <li className={s.itemsList}>
-                    <a href='/movies'>Фильмы </a>
-                </li>
-                <li className={s.itemsList}>
-                    <a href='/serials'>Сериалы </a>
-                </li>
+           <Row       gutter={{
+            xs: 8,
+            sm: 16,
+            md: 24,
+            lg: 32,
+          }}>
+                <div className={style.nav}>
+                    <Col span={6} className={style.navItems}>
+                        <NavLink to='/main' className={style.navLink} >Главная </NavLink>
+                    </Col>
+                    <Col span={6} className={style.navItems}>
+                        <NavLink to='/movies' className={style.navLink} >Фильмы </NavLink>
+                    </Col>
+                    <Col span={6} className={style.navItems}>
+                        <NavLink to='/serials' className={style.navLink} >Сериалы </NavLink>
+                    </Col>
+                    <Col span={6} className={style.navItems}>
+                        <NavLink to='/cartoons' className={style.navLink} >Мультфильмы </NavLink>
+                    </Col>
+                    </div>
+            </Row>
 
-                <li className={s.itemsList}>
-                    <a href='/cartoons'>Мультфильмы </a>
-                </li>
-            </ul>
-        </nav>
+     
     )
 }
 

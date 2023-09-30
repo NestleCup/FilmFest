@@ -1,32 +1,32 @@
 import React from 'react';
-// import NavBar from '../NavBar/NavBar';
-import s from '../Header/HeaderPart.module.css'
-
+import style from '../Header/HeaderPart.module.scss'
 import logo from '../../img/logo.png'
-import search from '../../img/search.png'
+import filter from '../../img/filter.png'
 import NavBar from './NavBar/NavBar';
-
+import { Col, Row } from 'antd';
+import Search from './Search/Search';
 
 
 const Header = () => {
   return (
-    <header className={s.header}>
-      <div className={s.logo}>
-        <div className={s.logoContainer}>
-          <div className={s.logoImg}>
-            <img src={logo} alt='d' />
+    <header >
+      <Row className={style.headerFlex}>
+        <Col flex="1000px" className={style.headerBlock}>
+          <div className={style.headerLogo}>
+            <div >
+              <img src={logo} alt='logo' />
+            </div>
+            <h2 className={style.title} style={{color:"white"}}>MyFilms</h2>
           </div>
-          <h1 className={s.title}>MyFilms</h1>
-        </div>
-      </div>
-      <div className={s.navBar}>
-        <NavBar />
-      </div>
-      <div className={s.search}>
-        <img src={search} alt='dd' />
-        <input type="text" class="header__search" placeholder="Поиск" />
-      </div>
-
+          <Col flex="500px">
+              <NavBar />       
+          </Col>
+        </Col>
+        <Col flex="auto" className={style.headerBlock} >      
+            <img src={filter} alt='filter' />
+            <Search />
+        </Col>
+      </Row>
     </header >
   );
 }
