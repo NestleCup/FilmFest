@@ -1,10 +1,11 @@
 import React from 'react';
 import style from '../Header/HeaderPart.module.scss'
 import logo from '../../img/logo.png'
-import filter from '../../img/filter.png'
+
 import NavBar from './NavBar/NavBar';
 import { Col, Row } from 'antd';
 import Search from './Search/Search';
+import Modal from './ModalPage/ModalPage';
 
 
 const Header = () => {
@@ -23,7 +24,8 @@ const Header = () => {
           </Col>
         </Col>
         <Col flex="auto" className={style.headerBlock} >      
-            <img src={filter} alt='filter' />
+           
+            <Modal/>
             <Search />
         </Col>
       </Row>

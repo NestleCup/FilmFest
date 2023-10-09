@@ -6,6 +6,7 @@ import SerialsPage from './components/content/SerialsPage/SerialsPage';
 import CartoonsPage from './components/content/CartoonsPage/CartoonsPage';
 import MainPage from './components/content/Main/MainPage';
 
+
 const App = () => {
 
   return (

@@ -1,20 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-
 const apiTopUrl = (process.env.REACT_APP_API_URL)
 const apiKey = (process.env.REACT_APP_API_KEY)
 
 export const fetchFilms = createAsyncThunk(
     'films/fetchFilms',
     async () => {
-        const response = await fetch(apiTopUrl, {
+     const response = await fetch(apiTopUrl, {
             headers: {
                 'X-API-KEY': apiKey,
                 'Content-Type': 'application/json',
             },
         })
         const formattedResponse = await response.json()
-        return formattedResponse
+        return formattedResponse   
     }
 )
 const initialState = {
@@ -35,7 +34,7 @@ export const filmsSlice = createSlice({
             state.isLoading = false
         },
         [fetchFilms.rejected]: (state) => {
-            state.isLoading = false
+            state.isLoading = true
          },
     }
 }
