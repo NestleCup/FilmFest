@@ -3,6 +3,7 @@
 * {
     margin: 0 auto;
     font-family: 'Jura', sans-serif;
+    
 
     img {
         height: auto;
@@ -15,6 +16,7 @@
     }
 
     body {
+        
         background-color: rgb(20, 15, 15);
 
         .app-wrapper {
@@ -25,7 +27,7 @@
             height: 100vh;
 
             .app-wrapper-content {
-        max-width: 1200px;
+                max-width: 1200px;
             }
 
             .app-wrapper-size {

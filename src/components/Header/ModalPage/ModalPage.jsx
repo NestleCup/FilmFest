@@ -6,28 +6,28 @@ import ModalForm from './ModalForm/ModalForm';
 import style from './Modal.module.scss'
 
 const ModalPage = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const showModal = () => {
-      setIsModalOpen(true);
-    };
-    const handleOk = () => {
-      setIsModalOpen(false);
-    };
-    const handleCancel = () => {
-      setIsModalOpen(false);
-    };
-    return (
-        <>
-        <img src={filter} alt='filter' type="primary" onClick={showModal} className={style.modalImg} /> 
-        <Modal 
-        title="Фильтр" 
-        open={isModalOpen} 
-        onOk={handleOk} 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  return (
+    <>
+      <img src={filter} alt='filter' type="primary" onClick={showModal} className={style.modalImg} />
+      <Modal
+        title="Фильтр"
+        open={isModalOpen}
+        onOk={handleOk}
         onCancel={handleCancel}>
-          <ModalForm/>
-        </Modal>
-      </>
-    );
+        <ModalForm />
+      </Modal>
+    </>
+  );
 };
 
 export default ModalPage;

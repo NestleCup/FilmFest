@@ -1,28 +1,29 @@
 import React from 'react';
 import style from './MainPage.module.scss'
 import { Col, Row } from 'antd';
-import ApiFilms from '../PageFilm/ApiFilms';
-import { Typography } from 'antd';
 import SwiperContent from '../Main/SwiperContent/SwiperContent';
+import TopFilms from './TopFilm/TopFilms';
+import { Typography } from 'antd';
+const { Title } = Typography;
 const MainPage = () => {
 
     return (
         <section className={style.mainWrap}>
-            <Row justify="center">
-                <Col span={24} className={style.mainBlock}>
+                <div className={style.main}>
                     <div className={style.mainTitle}>
-                        <h1 className={style.title} style={{ color: "white" }}>
+                        <Title className={style.title}>
                             Добро пожаловать на MyFilms -
                             онлайн кинотеатр более чем 960 фильмов!
-                        </h1>
+                        </Title>
                     </div>
+                    <div className={style.mainSwiper}>
                     <SwiperContent />
-                </Col>
+                    </div>
+                </div>
 
-                <Col span={24} className={style.mainFilms} >
-                    <ApiFilms />
-                </Col>
-            </Row>
+                <div className={style.mainFilms} >
+                    <TopFilms/>
+                </div>
         </section>
     );
 };
