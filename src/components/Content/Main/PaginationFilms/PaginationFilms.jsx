@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination } from 'antd';
 import style from './PaginationFilms.module.scss'
 
-const PaginationFilms = () => {
+export const PaginationFilms = () => {
     const handlePageClick = (data) => {
         console.log(data);
     }
@@ -12,5 +12,3 @@ const PaginationFilms = () => {
         </>
     );
 };
-
-export default PaginationFilms;

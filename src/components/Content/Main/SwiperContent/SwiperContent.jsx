@@ -4,7 +4,7 @@ import 'swiper/css';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 
-const SwiperContent = () => {
+export const SwiperContent = () => {
     return (
 
         <Swiper
@@ -110,9 +110,6 @@ const SwiperContent = () => {
                         </div>
                     </div>
                 </SwiperSlide>
-         
-
         </Swiper >
     );
 };
-export default SwiperContent;

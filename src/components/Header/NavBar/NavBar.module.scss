@@ -1,13 +1,12 @@
 .nav {
   display: flex;
-  align-items: center;
 
   .navLink:hover {
     color: red;
   }
 
   .navItems {
-    font-size: 18px;
+    font-size: 1.2em;
   }
 
   .navLink {

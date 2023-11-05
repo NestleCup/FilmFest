@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import {apiTopUrl , apiKey} from '../../../utils/const/api'
 
-const apiTopUrl = (process.env.REACT_APP_API_URL)
-const apiKey = (process.env.REACT_APP_API_KEY)
+
 
 export const fetchFilms = createAsyncThunk(
     'films/fetchFilms',
@@ -19,6 +19,7 @@ export const fetchFilms = createAsyncThunk(
 const initialState = {
     topFilms: [],
     isLoading: false,
+    
 }
 export const filmsSlice = createSlice({
     name: 'films',
@@ -40,6 +41,7 @@ export const filmsSlice = createSlice({
 }
 )
 
-
+export const selectStatusName = filmsSlice.isLoading
+export const selectStatusData = filmsSlice.topFilms
 export const { getTopFilms } = filmsSlice.actions
 export default filmsSlice.reducer  

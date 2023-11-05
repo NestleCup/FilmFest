@@ -3,24 +3,43 @@
 * {
     margin: 0 auto;
     font-family: 'Jura', sans-serif;
+    box-sizing: inherit;
     
-
+    *::before,
+    *::after {
+        box-sizing: inherit;
+      font-family: 'Jura', sans-serif;
+    
+    }
+    
+    body {
+        background-color: rgb(20, 15, 15);
+    
+        margin: 0;
+        min-width: 360px;
+        min-height: 100%;
+        font-weight: 300;
+        font-size: 16px;
+        color: var(--color-light-dark);
+        overflow-anchor: none;
+    }
+    
     img {
         height: auto;
         max-width: 100%;
         object-fit: cover;
     }
-
+    
     a {
         text-decoration: none;
-    }
+    }    
+
 
     body {
         
-        background-color: rgb(20, 15, 15);
 
         .app-wrapper {
-            background-image: url('./img/bg.png');
+            background-image: url('./assets/img/bg.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;

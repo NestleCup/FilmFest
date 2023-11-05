@@ -1,11 +1,11 @@
 import React from 'react';
 import { Modal } from 'antd';
 import { useState } from 'react';
-import filter from '../../../img/filter.png'
+import filter from '../../../assets/img/filter.png'
 import ModalForm from './ModalForm/ModalForm';
 import style from './Modal.module.scss'
 
-const ModalPage = () => {
+export const ModalPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -17,8 +17,10 @@ const ModalPage = () => {
     setIsModalOpen(false);
   };
   return (
-    <>
-      <img src={filter} alt='filter' type="primary" onClick={showModal} className={style.modalImg} />
+    <div>
+      <div>
+        <img src={filter} alt='filter' type="primary" onClick={showModal} className={style.modalImg} />
+      </div>
       <Modal
         title="Фильтр"
         open={isModalOpen}
@@ -26,8 +28,6 @@ const ModalPage = () => {
         onCancel={handleCancel}>
         <ModalForm />
       </Modal>
-    </>
+    </div>
   );
 };
-
-export default ModalPage;

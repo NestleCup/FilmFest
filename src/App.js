@@ -30,7 +30,6 @@ const App = () => {
                 } />
                 
             </Routes>
-         
           </div>
         </main>
       </div>
