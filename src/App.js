@@ -1,39 +1,43 @@
-import HeaderPart from './components/Header/HeaderPart';
-import './App.scss'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Movies from './components/content/MoviesPage/MoviesPage';
-import SerialsPage from './components/content/SerialsPage/SerialsPage';
-import CartoonsPage from './components/content/CartoonsPage/CartoonsPage';
-import MainPage from './components/content/Main/MainPage';
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './pages/MainPage/MainPage';
+import MoviesPage from './pages/MoviesPage/MoviesPage';
+import SerialsPage from './pages/SerialsPage/SerialsPage';
+import CartoonsPage from './pages/CartoonsPage/CartoonsPage';
+import '../src/_global.css';
+
+
+import {AboutPage} from './pages/AboutPage/AboutPage';
+import Layout from './components/Layout/Layout';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 
 const App = () => {
 
   return (
-    <BrowserRouter>
-      <div className='app-wrapper'>
-        <HeaderPart />
-        <main className='app-wrapper-content'>
-          <div className='app-wrapper-size'>
-            <Routes>
-              <Route path="/main/*"
-                element={<MainPage />
-                } />
-              <Route path="/movies/*"
-                element={<Movies />
-                } />
-              <Route path="/serials/*"
-                element={<SerialsPage />
-                } />
-              <Route path="/cartoons/*"
-                element={<CartoonsPage />
-                } />
-                
-            </Routes>
-          </div>
-        </main>
-      </div>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index
+          element={<MainPage />
+          } />
+        <Route path="/:kinopoiskId"
+          element={<AboutPage />
+          } />
+        <Route path="movies"
+          element={<MoviesPage />
+          } />
+        <Route path="serials"
+          element={<SerialsPage />
+          } />
+        <Route path="cartoons"
+          element={<CartoonsPage />
+          } />
+        {/* <Route path=""
+          element={<SearchPage />
+          } /> */}
+      </Route>
+    </Routes>
+
+
   )
 }
 

@@ -1,0 +1,13 @@
+.form {
+    display: flex;
+
+    .form__genre,
+    .form__year,
+    .form__rating {
+        margin-right: 20px;
+    }
+
+    .form__genre{
+        width: 20%;
+    }
+}

@@ -1,0 +1,19 @@
+.main {
+  height: 100%;
+
+  .position {
+    padding-top: 90px;
+  }
+}
+
+.title {
+  max-width: 50%;
+  color: white;
+  text-align: center;
+  font-size: clamp(16px, 3vw, 24px);
+}
+
+.paginate {
+  display: flex;
+  justify-content: center;
+}

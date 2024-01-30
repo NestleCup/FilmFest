@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {  KinopoiskApi} from '../services/KinopoiskApi'
-import filmsReducer from './feature/films/filmsSlice'
 import paginationReducer from './feature/pagination/paginationSlise'
+import searchReducer from './feature/search/searchSlise'
+
+// import filterReucer from './feature/filter/filterSlice'
+
 
 const store =  configureStore({
   reducer: {
-    // films: filmsReducer,
-    // pagination: paginationReducer,
+    // filterReucer: filterReucer,
+    search: searchReducer,
+    pagination: paginationReducer,
     [KinopoiskApi.reducerPath]: KinopoiskApi.reducer,
   },
   middleware: (gDM) => 

@@ -1,0 +1,15 @@
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+      margin-right: 10px;
+  }
+
+  .title {
+      background: linear-gradient(to right, rgb(255, 0, 0) , rgb(255, 255, 255) 50%);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+  }
+}
