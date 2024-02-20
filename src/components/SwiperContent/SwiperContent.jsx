@@ -10,31 +10,33 @@ import 'swiper/css/autoplay';
 const SwiperContent = (props) => {
 
 	return (
-		<>
-			<Swiper
-				modules={[Autoplay]}
-				autoplay={{
-					delay: 2800,
-				}}
-				slidesPerView={3}
-			>
-				{props.error ? (
-					<>Oh no, there was an error</>
-				) : props.isLoading ? (
-					<Loading />
-				) : props.data ? (
-					props.data.items.map(films => (
-						<SwiperSlide key={films.kinopoiskId}>
-							<div className={style.slide__img}>
-								<img src={films.posterUrl} alt='poster' />
-							</div>
-						</SwiperSlide>
-					))
-				) : null
-				}
-			</Swiper >
-
-		</>
+		<div className={style.flex} >
+			<div >
+				<Swiper
+					modules={[Autoplay]}
+					autoplay={{
+						delay: 2800,
+					}}
+					slidesPerView={3}
+					spaceBetween={150}
+				>
+					{props.error ? (
+						<>Oh no, there was an error</>
+					) : props.isLoading ? (
+						<Loading />
+					) : props.data ? (
+						props.data.items.map(films => (
+							<SwiperSlide key={films.kinopoiskId}>
+								<div className={style.slide__img}>
+									<img src={films.posterUrl} alt='poster' />
+								</div>
+							</SwiperSlide>
+						))
+					) : null
+					}
+				</Swiper >
+			</div>
+		</div>
 	);
 };
 export default SwiperContent

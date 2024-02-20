@@ -1,14 +1,12 @@
 import React from 'react';
-
 import style from './TopFilms.module.scss'
-import { Rate, Typography, Spin, ConfigProvider } from 'antd';
+import { Rate, Typography, ConfigProvider } from 'antd';
 import { getRate } from '../../utils/helpers/getRate'
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 const { Title } = Typography;
 
 export function TopFilms(props) {
-
-
   return (
     <>
       <ConfigProvider
@@ -24,7 +22,7 @@ export function TopFilms(props) {
           {props.error ? (
             <>Oh no, there was an error</>
           ) : props.isLoading ? (
-            <div>Loading</div>
+            <Loading />
           ) : props.data ? (
             props.data.items.map(films => (
               <React.Fragment key={films.kinopoiskId}>
@@ -39,7 +37,6 @@ export function TopFilms(props) {
                         disabled={true}
                         defaultValue={getRate(Math.floor(films.ratingKinopoisk))} />
                     }
-
                     <div className={style.filmCardInfo}>
                       <div className={style.filmCardTitle}>
                         <Title level={3} className={style.title}>{films.nameRu}</Title>

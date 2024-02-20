@@ -2,10 +2,15 @@ import React from 'react';
 // import NavBar from '../HeaderPart/NavBar/NavBar';
 import { routesParth } from '../../utils/const/routes';
 import style from "./Footer.module.scss"
-import {  NavLink, Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Logo from '../Logo/Logo';
-import gmail from '../../assets/img/gmail.png'
+import { Divider, ConfigProvider } from 'antd';
+import Networks from '../Networks/Networks';
+
+import { Typography } from 'antd';
+
+const { Text } = Typography;
 const Footer = () => {
 
 	function getCurrentYear() {
@@ -19,33 +24,50 @@ const Footer = () => {
 
 	]
 	return (
-		<footer className={style.footer}>
-			<div className={classNames('container', style.container)}>
-				<div className={style.connection}>
-					<Logo />
-					<div className={style.gmail}>
-						<span>
-							<img src={gmail} alt="gmail" />
-						</span>
-						<a className={style.link}
-							href='https://www.gmail.com/mail/help/intl/ru/about.html?de.'
-							target="Starfall">KinoFest@gmail.com</a>
+		<ConfigProvider
+			theme={{
+				token: {
+					colorLink: '#fa4d4d',
+					colorText: '#8A8A8A',
+					fontSize: 22,
+					fontFamilyCode: 'Jura',
+					colorSplit: '#1C1E2A'
+				},
+			}}
+		>
+			<footer className={classNames('wrap', style.footer)}>
+				<div className={style.container}>
+					<div className={style.connection}>
+						<Logo />
+						<div className={style.gmail}>
+							<span>
+							</span>
+						</div>
+					</div>
+					<ul className={style.list}>
+						{link.map(item => {
+							return (
+								<NavLink
+									key={item.id}
+									to={item.to}
+									className={style.link}
+								>{item.name}</NavLink>)
+						})}
+					</ul>
+					<div className={style.support}>
+						<p>Остались вопросы?</p>
+						<Text underline>supportFest@gmail.com</Text>
 					</div>
 				</div>
 
-				<ul className={ style.list}>
-							   {link.map(item => {
-                        return (
-                            <NavLink
-                            key={item.id}
-                                to={item.to}
-                                className={style.link}
-                            >{item.name}</NavLink>)
-                    })}
-				</ul>
-				<span className={style.copy}>© {getCurrentYear()} КиноФест</span>
-			</div>
-		</footer>
+				<Divider />
+				<div className={style.networks}>
+					<span className={style.copy}>© {getCurrentYear()}, КиноФест.  Все права защищены.</span>
+					<Networks />
+				</div>
+			</footer>
+		</ConfigProvider  >
+
 	);
 };
 

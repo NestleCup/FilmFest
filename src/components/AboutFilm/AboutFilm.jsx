@@ -1,21 +1,30 @@
-import React from 'react';
 import style from './AboutFilm.module.scss';
-import { Rate, ConfigProvider, Typography } from 'antd';
-
-import { useGetFilmsByIdQuery } from '../../services/KinopoiskApi'
+import { useGetFilmsByIdQuery, useGetActorsByIdQuery } from '../../services/KinopoiskApi'
 import Breadcrumb from '../Breadcrumb/index';
 import { getRate } from '../../utils/helpers/getRate'
 import { useState } from 'react';
+import { Divider, Rate, ConfigProvider, Typography } from 'antd';
+import { useParams } from 'react-router-dom';
+import Actors from './Actors/Actors';
+import Reviews from './Reviews/Reviews';
+
 const { Paragraph } = Typography;
 
-const AboutFilm = (props) => {
-	const { data, error, isLoading } = useGetFilmsByIdQuery(props.kinopoiskId)
+const AboutFilm = () => {
+	const { kinopoiskId } = useParams()
+	const { data: dataActors, error: errActors, isLoading: loadingActors } = useGetActorsByIdQuery(kinopoiskId)
+	const { data, error, isLoading } = useGetFilmsByIdQuery(kinopoiskId)
+	const [ellipsis, setEllipsis] = useState(true);
 	return (
 		<>
 			<ConfigProvider
 				theme={{
 					token: {
-						colorText: 'white'
+						colorLink: '#fa4d4d',
+						colorText: 'white',
+						fontSize: 22,
+						fontFamilyCode: 'Jura',
+						colorSplit: '#1C1E2A'
 					},
 				}}
 			>
@@ -55,29 +64,24 @@ const AboutFilm = (props) => {
 										</span>
 									</div>
 									<div className={style.slogan}>
-										<span>{data.slogan}</span>
+										<span className={style.slogan}>{data.slogan}</span>
 									</div>
 									<div className={style.description}>
-
-										<Paragraph
-											ellipsis={{
-												expandable: true,
-												maxLength: '200'
-											}}
-										>
+										<Paragraph ellipsis={ellipsis ? { rows: 4, expandable: true, symbol: 'подробнее' } : false}>
 											{data.description}
 										</Paragraph>
 									</div>
-
 								</div>
-
 							</div>
-
 						</div>
 					</div>
 				) : null}
-			</ConfigProvider >
-
+				<div className='wrap'>
+					<Divider />
+				</div>
+				<Actors dataActors={dataActors} errActors={errActors} loadingActors={loadingActors} />
+				<Reviews />
+			</ConfigProvider  >
 		</>
 	);
 };

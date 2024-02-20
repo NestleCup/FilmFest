@@ -1,5 +1,7 @@
 .filmBlock {
+  margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   cursor: pointer;
   flex-wrap: wrap;
   .filmCard:focus-visible .filmCardHover {

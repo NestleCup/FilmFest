@@ -13,18 +13,16 @@ export const KinopoiskApi = createApi({
 	}),
 	endpoints: (builder) => ({
 		getTopFilms: builder.query({
-			query: (totalPages = '') => `/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=${totalPages}`,
+			query: (pages = '') => `/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=${pages}`,
 		}),
 
 		getFilmsById: builder.query({
 			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}`
-			// ,({
-			// 	url: 
-			// 	params: {
-			// 		id: kinopoiskId
-			// 	}
-			// }),
 		}),
+		getImagesById: builder.query({
+			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/images?type=STILL&page=1`
+		}),
+
 		getFilmsBySearch: builder.query({
 			query: (keyword) => ({
 				url: `/api/v2.1/films/search-by-keyword?keyword=${keyword}&page=2`,
@@ -41,8 +39,18 @@ export const KinopoiskApi = createApi({
 		getComicsFilm: builder.query({
 			query: () => `/api/v2.2/films/collections?type=KIDS_ANIMATION_THEME&page=1`,
 		}),
+		getFilmsVideosById:builder.query({
+			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/videos`,
+		}),
+		getActorsById:builder.query({
+			query: (kinopoiskId) => ({
+				url: `/api/v1/staff?filmId=${kinopoiskId}`
+			}),
+		}),
+		getJenreFilmByFilters:builder.query({
+			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/videos`,
+		}),
 	})
-
 })
 
 export const {
@@ -52,4 +60,7 @@ export const {
 	useGetComicsFilmQuery,
 	useGetTvShowsFilmsQuery,
 	useLazyGetFilmsBySearchQuery,
+	useGetImagesByIdQuery,
+	useGetFilmsVideosByIdQuery,
+	useGetActorsByIdQuery
 } = KinopoiskApi

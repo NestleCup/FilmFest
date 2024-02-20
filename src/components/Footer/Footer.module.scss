@@ -1,32 +1,42 @@
 .footer {
-	background-color: var(--color-dark);
+	background-color: #08080E;
 
 	@media (max-width: 768px) {
 		background-color: var(--color-light-dark);
 	}
 
-
-
+	.networks {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 17px;
+		.copy {
+			font-size: 14px;
+			line-height: 14px;
+			color: #8A8A8A;
+		}
+	}
 
 	.container {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-top: 30px;
-		padding-bottom: 30px;
 
 		@media (max-width: 576px) {
 			flex-direction: column;
 		}
 
-		.connection {
-			color: rgba(#fff, 0.5);
+		.support {
+			color: #fff;
+		}
+
+
 
 			.gmail {
 				display: flex;
 				align-items: center;
 			}
-		}
+		
 
 		.list {
 			display: flex;
@@ -35,20 +45,12 @@
 			@media (max-width: 576px) {
 				margin: 40px 0;
 			}
-			.link{
+			.link {
 				margin-right: 20px;
 			}
-			// .link:last-child{
-			// 	margin-right: 0;
-
-			// }
 		}
 
-		.copy {
-			font-size: 14px;
-			line-height: 14px;
-			color: rgba(#fff, 0.5);
-		}
+
 
 	}
 }

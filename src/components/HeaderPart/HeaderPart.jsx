@@ -9,8 +9,8 @@ import Logo from '../Logo/Logo';
 
 const HeaderPart = () => {
   return (
-    <header>
-      <div className={style.header}>
+    <header className={style.header} >
+      <div className='wrap'>
         <div className={style.flex}>
         <Logo/>
           <NavBar />

@@ -8,8 +8,8 @@ import PaginationFilms from '../../components/PaginationFilms/PaginationFilms';
 const { Title } = Typography;
 
 const MainPage = () => {
-  const [totalPages, setTotalPages] = useState(1)
-  const { data, error, isLoading } = useGetTopFilmsQuery(totalPages);
+  const [pages, setPages] = useState(1)
+  const { data, error, isLoading } = useGetTopFilmsQuery(pages);
   return (
 
     <ConfigProvider
@@ -59,8 +59,8 @@ const MainPage = () => {
           data={data}
           error={error}
           isLoading={isLoading}
-          totalPages={totalPages}
-          setTotalPages={setTotalPages}
+          pages={pages}
+          setPages={setPages}
         />
       </div>
     </ConfigProvider>
