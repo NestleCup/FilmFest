@@ -5,6 +5,7 @@ import { Typography, ConfigProvider } from 'antd';
 import SwiperContent from '../../components/SwiperContent/SwiperContent';
 import { TopFilms } from '../../components/TopFilms/TopFilms';
 import PaginationFilms from '../../components/PaginationFilms/PaginationFilms';
+
 const { Title } = Typography;
 
 const MainPage = () => {
@@ -27,7 +28,6 @@ const MainPage = () => {
     >
       <section className={style.main} >
         <div className='bg' >
-          <div className='wrap'>
             <div className={style.position}>
               <div className={style.title}>
                 <h1>
@@ -42,7 +42,6 @@ const MainPage = () => {
                   isLoading={isLoading} />
               </div>
             </div>
-          </div>
         </div>
       </section >
       <section className='wrap'>

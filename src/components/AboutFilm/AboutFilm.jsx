@@ -1,5 +1,5 @@
 import style from './AboutFilm.module.scss';
-import { useGetFilmsByIdQuery, useGetActorsByIdQuery } from '../../services/KinopoiskApi'
+import { useGetFilmsByIdQuery, useGetActorsByIdQuery, useGetFilmsVideosByIdQuery } from '../../services/KinopoiskApi'
 import Breadcrumb from '../Breadcrumb/index';
 import { getRate } from '../../utils/helpers/getRate'
 import { useState } from 'react';
@@ -7,12 +7,12 @@ import { Divider, Rate, ConfigProvider, Typography } from 'antd';
 import { useParams } from 'react-router-dom';
 import Actors from './Actors/Actors';
 import Reviews from './Reviews/Reviews';
+import Player from './Player/Player';
 
 const { Paragraph } = Typography;
 
 const AboutFilm = () => {
 	const { kinopoiskId } = useParams()
-	const { data: dataActors, error: errActors, isLoading: loadingActors } = useGetActorsByIdQuery(kinopoiskId)
 	const { data, error, isLoading } = useGetFilmsByIdQuery(kinopoiskId)
 	const [ellipsis, setEllipsis] = useState(true);
 	return (
@@ -22,7 +22,7 @@ const AboutFilm = () => {
 					token: {
 						colorLink: '#fa4d4d',
 						colorText: 'white',
-						fontSize: 22,
+						fontSize: 20,
 						fontFamilyCode: 'Jura',
 						colorSplit: '#1C1E2A'
 					},
@@ -79,7 +79,10 @@ const AboutFilm = () => {
 				<div className='wrap'>
 					<Divider />
 				</div>
-				<Actors dataActors={dataActors} errActors={errActors} loadingActors={loadingActors} />
+				<section>
+					<Player />
+				</section>
+				<Actors />
 				<Reviews />
 			</ConfigProvider  >
 		</>

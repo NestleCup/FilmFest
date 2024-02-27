@@ -4,8 +4,9 @@ import { jenreImg } from '../../utils/const/swiperImage'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/effect-fade';
 import 'swiper/css';
-import { nanoid } from '@reduxjs/toolkit'
 import { FreeMode, Mousewheel } from 'swiper/modules';
+import { Link } from 'react-router-dom';
+
 const SwiperJenre = () => {
 
     return (
@@ -24,12 +25,14 @@ const SwiperJenre = () => {
             >
                 {jenreImg.map(jenre => {
                     return (
-                        <SwiperSlide key={nanoid()} >
-                            <div className={style.slider}>
-                                <div className={style.slider_img} >
-                                    <img src={jenre.urls} alt="icon" />
+                        <SwiperSlide key={jenre.id} >
+                            <Link to={`/movies/${jenre.category}`} className={style.filmCard}>
+                                <div className={style.slider} >
+                                    <div className={style.slider_img} >
+                                        <img src={jenre.urls} alt="icon" />
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     )
                 })}

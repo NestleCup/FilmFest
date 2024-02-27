@@ -7,8 +7,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import Loading from '../../Loading/Loading';
 import { nanoid } from '@reduxjs/toolkit'
+import { useGetActorsByIdQuery } from '../../../services/KinopoiskApi'
+import { useParams } from 'react-router-dom';
 
-const Actors = ({ dataActors, errActors, loadingActors }) => {
+const Actors = (props) => {
+  const { kinopoiskId } = useParams()
+  const { data, error, isLoading } = useGetActorsByIdQuery(kinopoiskId)
   return (
     <>
       <h3 className='wrap title'>
@@ -23,19 +27,20 @@ const Actors = ({ dataActors, errActors, loadingActors }) => {
           freeModeMomentum={false}
           mousewheel={true}
         >
-          {errActors ? (
+          {error ? (
             <div>oh no errr</div>
-          ) : loadingActors ? (
+          ) : isLoading ? (
             <Loading />
-          ) : dataActors ? (
-            dataActors.map(data => (
+          ) : data ? (
+            data.map(item => (
+              item.nameRu &&
               <SwiperSlide key={nanoid()}>
                 <div className={style.container}>
                   <div className={style.profile_img}>
-                    <img src={data.posterUrl} alt='profile' />
+                    <img src={item.posterUrl} alt='profile' />
                   </div>
-                  <p>{data.nameRu}</p>
-                  <p className={style.profession}>{data.professionText.slice(0, -1)}</p>
+                  <p>{item.nameRu}</p>
+                  <p className={style.profession}>{item.professionText.slice(0, -1)}</p>
                 </div>
               </SwiperSlide>
             ))

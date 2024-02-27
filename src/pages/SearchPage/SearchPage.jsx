@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchResult from '../../components/HeaderPart/Search/component/SearchResult/SearchResult';
 
 const SearchPage = () => {
     return (
@@ -6,6 +7,7 @@ const SearchPage = () => {
             <div className='wrap'>
                 <div className='position'>
                     <h1 className='title'>search</h1>
+                    <SearchResult/>
                 </div>
             </div>
         </section>

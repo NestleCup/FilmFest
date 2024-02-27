@@ -39,16 +39,19 @@ export const KinopoiskApi = createApi({
 		getComicsFilm: builder.query({
 			query: () => `/api/v2.2/films/collections?type=KIDS_ANIMATION_THEME&page=1`,
 		}),
-		getFilmsVideosById:builder.query({
+		getFilmsVideosById: builder.query({
 			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/videos`,
 		}),
-		getActorsById:builder.query({
+		getActorsById: builder.query({
 			query: (kinopoiskId) => ({
 				url: `/api/v1/staff?filmId=${kinopoiskId}`
 			}),
 		}),
-		getJenreFilmByFilters:builder.query({
-			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/videos`,
+		getJenreFilmByNumber: builder.query({
+			query: ({category, pages = ''}) => `/api/v2.2/films?genres=${category}&order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1000&yearTo=3000&page=${pages}`,
+		}),
+		getReviewsById: builder.query({
+			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/reviews?page=1&order=DATE_DESC`,
 		}),
 	})
 })
@@ -62,5 +65,7 @@ export const {
 	useLazyGetFilmsBySearchQuery,
 	useGetImagesByIdQuery,
 	useGetFilmsVideosByIdQuery,
-	useGetActorsByIdQuery
+	useGetActorsByIdQuery,
+	useGetReviewsByIdQuery,
+	useGetJenreFilmByNumberQuery
 } = KinopoiskApi

@@ -17,8 +17,8 @@ const SwiperContent = (props) => {
 					autoplay={{
 						delay: 2800,
 					}}
-					slidesPerView={3}
-					spaceBetween={150}
+					slidesPerView={3.5}
+					spaceBetween={50}
 				>
 					{props.error ? (
 						<>Oh no, there was an error</>

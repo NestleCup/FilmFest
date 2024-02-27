@@ -1,6 +1,44 @@
-.block{
-  width: 50%;
-  background-color: #3D3D41;
+.block {
+  background-color: #42424d;
   border-radius: 7px;
   padding: 23px;
+  flex-wrap: wrap;
+  border: .1px solid #6b6b7776;
+  margin-bottom: 15px;
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 5px;
+
+    .title {
+      color: aliceblue;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: #ffffff;
+      font-size: 20px;
+      max-width: 9  0%;
+    }
+
+    .bg {
+      margin-right: 20px;
+      display: flex;
+      background-color: white;
+      padding: 7px 10px;
+      align-items: center;
+      border-radius: 7px;
+    }
+
+    .img {
+      margin-right: 5px;
+    }
+  }
+
+  .flex:last-child {
+    padding-right: 0;
+  }
+
 }
