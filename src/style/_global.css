@@ -63,7 +63,6 @@ a {
   justify-content: center;
   z-index: 7;
   height: 100%;
-  /* background: rgba(0, 0, 0, 0.901); */
 }
 .position{
 padding-top: 100px;
@@ -71,7 +70,6 @@ padding-top: 100px;
 .title{
   font-size: 25px;
   color: white;
-  margin-bottom: 20px;
 }
 .spin{
   display: flex;
@@ -86,10 +84,4 @@ h3{
 }
 .flex {
   display: flex;
-}
-.swiper{
- 
-}
-.res-slide{
-  
 }

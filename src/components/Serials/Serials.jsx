@@ -4,6 +4,7 @@ import { getRate } from '../../utils/helpers/getRate'
 import { Link } from 'react-router-dom';
 import { useGetTvShowsFilmsQuery } from '../../services/KinopoiskApi';
 import Loading from '../Loading/Loading';
+import uuid from 'react-uuid';
 
 
 const Serials = () => {
@@ -18,7 +19,7 @@ const Serials = () => {
           <Loading />
         ) : data ? (
           data.items.map(items => (
-            <Link to={`/${items.kinopoiskId}`} key={items.kinopoiskId} className='film_link'>
+            <Link to={`/${items.kinopoiskId}`} key={uuid()} className='film_link'>
               <div className='film_poster'>
                 <img src={items.posterUrl} alt='Poster' />
               </div>

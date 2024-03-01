@@ -42,13 +42,13 @@ const AboutFilm = () => {
 									<Breadcrumb />
 								</div>
 								<div className={style.container}>
-									{data.logoUrl === null ||
+									{data.logoUrl ?
 										<div className={style.logo}>
 											<img src={data.logoUrl} alt="logo" />
-										</div>}
-									<h2>
-										{data.nameRu}
-									</h2>
+										</div> :
+										<h2>
+											{data.nameRu}
+										</h2>}
 									{data.ratingKinopoisk === null ||
 										<Rate allowHalf
 											count={5}

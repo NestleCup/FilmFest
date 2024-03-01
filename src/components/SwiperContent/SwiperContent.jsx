@@ -1,11 +1,13 @@
 import style from './SwiperContent.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/swiper-bundle.css';
-import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import Loading from '../Loading/Loading';
+import uuid from 'react-uuid';
+import 'swiper/css';
 import 'swiper/css/autoplay';
+import 'swiper/swiper-bundle.css';
+
+
 
 const SwiperContent = (props) => {
 
@@ -26,7 +28,7 @@ const SwiperContent = (props) => {
 						<Loading />
 					) : props.data ? (
 						props.data.items.map(films => (
-							<SwiperSlide key={films.kinopoiskId}>
+							<SwiperSlide key={uuid()}>
 								<div className={style.slide__img}>
 									<img src={films.posterUrl} alt='poster' />
 								</div>

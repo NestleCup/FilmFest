@@ -1,28 +1,17 @@
 import { React } from 'react';
 import style from "./SwiperJenre.module.scss"
 import { jenreImg } from '../../utils/const/swiperImage'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css/effect-fade';
-import 'swiper/css';
-import { FreeMode, Mousewheel } from 'swiper/modules';
+import {  SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
+import { SwiperContainer } from '../SwiperContainer/SwiperContainer';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+
 
 const SwiperJenre = () => {
 
     return (
-        <div className={style.wrapper}>
-            <div className={style.left_shadow} />
-            <Swiper
-                loop={true}
-                freeMode={true}
-                slidesPerView={5.5}
-                spaceBetween={30}
-                centeredSlides={true}
-                initialSlide={5}
-                mousewheel={true}
-                modules={[FreeMode, Mousewheel]}
-                className="mySwiper"
-            >
+     <SwiperContainer title='Выберите жанр'>
                 {jenreImg.map(jenre => {
                     return (
                         <SwiperSlide key={jenre.id} >
@@ -36,9 +25,7 @@ const SwiperJenre = () => {
                         </SwiperSlide>
                     )
                 })}
-            </Swiper>
-            <div className={style.right_shadow} />
-        </div>
+            </SwiperContainer>
     );
 };
 export default SwiperJenre;

@@ -5,9 +5,9 @@ import { Rate } from 'antd';
 import { getRate } from '../../utils/helpers/getRate'
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
-
 import PaginationFilms from '../PaginationFilms/PaginationFilms';
 import Breadcrumb from '../Breadcrumb';
+import uuid from 'react-uuid';
 
 const JenreResult = () => {
   const { category } = useParams()
@@ -25,7 +25,8 @@ const JenreResult = () => {
           <Loading />
         ) : data ? (
           data.items.map(films => (
-            <React.Fragment key={films.kinopoiskId}>
+            <React.Fragment key={uuid()}
+            >
               <Link to={`/${films.kinopoiskId}`} className='film_link'>
                 <div className='film_poster'>
                   <img src={films.posterUrl} alt='Poster'></img>

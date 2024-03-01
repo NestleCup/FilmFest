@@ -9,9 +9,8 @@ const MoviesPage = () => {
             <div className={style.position}>
                 <div className='wrap'>
                     <Breadcrumb />
-                    <h2 className={style.title}>Выберите жанр</h2>
                 </div>
-                    <SwiperJenre />
+                <SwiperJenre />
             </div>
         </section>
     );

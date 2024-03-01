@@ -3,6 +3,7 @@ import { Rate } from 'antd';
 import { getRate } from '../../utils/helpers/getRate'
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
+import uuid from 'react-uuid';
 
 export function TopFilms(props) {
   return (
@@ -14,7 +15,7 @@ export function TopFilms(props) {
           <Loading />
         ) : props.data ? (
           props.data.items.map(films => (
-            <React.Fragment key={films.kinopoiskId}>
+            <React.Fragment key={uuid()}>
               <Link to={`/${films.kinopoiskId}`} className='film_link'>
                 <div className='film_poster'>
                   <img src={films.posterUrl} alt='Poster' />
