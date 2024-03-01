@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from './MainPage.module.scss'
 import { useGetTopFilmsQuery } from '../../services/KinopoiskApi';
 import { Typography, ConfigProvider } from 'antd';
-import SwiperContent from '../../components/SwiperContent/SwiperContent';
+import SwiperMain from '../../components/SwiperMain/SwiperMain';
 import { TopFilms } from '../../components/TopFilms/TopFilms';
 import PaginationFilms from '../../components/PaginationFilms/PaginationFilms';
 
@@ -35,7 +35,7 @@ const MainPage = () => {
                   онлайн кинотеатр более чем 960 фильмов!
                 </h1>
               </div>
-                <SwiperContent
+                <SwiperMain
                   data={data}/>
             </div>
         </div>

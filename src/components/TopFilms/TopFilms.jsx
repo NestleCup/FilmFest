@@ -28,8 +28,8 @@ export function TopFilms(props) {
                       defaultValue={getRate(Math.floor(films.ratingKinopoisk))} />
                   }
                   <div className='film_info'>
-                    <div className='film-info_title'>
-                      <p className='title'>{films.nameRu}</p>
+                    <div >
+                      <p className='film-info_title'>{films.nameRu}</p>
                     </div>
                     <div className='film-info_genre'>
                       <span className='genre'>{films.genres.map(

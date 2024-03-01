@@ -57,13 +57,9 @@
 }
 
 .film-info_title {
-  margin-top: 20px;
-}
-
-.title {
   font-size: 25px;
   color: white;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .film-info_genre {

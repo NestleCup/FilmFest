@@ -1,4 +1,4 @@
-import style from './SwiperContent.module.scss'
+import style from './SwiperMain.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import Loading from '../Loading/Loading';
@@ -9,11 +9,10 @@ import 'swiper/swiper-bundle.css';
 
 
 
-const SwiperContent = (props) => {
+const SwiperMain = (props) => {
 
 	return (
 		<div className={style.flex} >
-			<div >
 				<Swiper
 					modules={[Autoplay]}
 					autoplay={{
@@ -38,7 +37,6 @@ const SwiperContent = (props) => {
 					}
 				</Swiper >
 			</div>
-		</div>
 	);
 };
-export default SwiperContent
+export default SwiperMain

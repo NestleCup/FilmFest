@@ -1,6 +1,5 @@
 .footer {
 	background-color: #08080E;
-
 	@media (max-width: 768px) {
 		background-color: var(--color-light-dark);
 	}
@@ -28,6 +27,10 @@
 
 		.support {
 			color: #fff;
+			p{
+				font-size: 20px;
+				margin: 0;
+			}
 		}
 
 

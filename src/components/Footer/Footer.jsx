@@ -1,8 +1,7 @@
 import React from 'react';
-// import NavBar from '../HeaderPart/NavBar/NavBar';
 import { routesParth } from '../../utils/const/routes';
 import style from "./Footer.module.scss"
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import Logo from '../Logo/Logo';
 import { Divider, ConfigProvider } from 'antd';
@@ -29,21 +28,16 @@ const Footer = () => {
 				token: {
 					colorLink: '#fa4d4d',
 					colorText: '#8A8A8A',
-					fontSize: 22,
+					fontSize: 18,
 					fontFamilyCode: 'Jura',
-					colorSplit: '#1C1E2A'
+					colorSplit: '#1C1E2A',
+					orientationMargin: 0
 				},
 			}}
 		>
-			<footer className={classNames('wrap', style.footer)}>
-				<div className={style.container}>
-					<div className={style.connection}>
-						<Logo />
-						<div className={style.gmail}>
-							<span>
-							</span>
-						</div>
-					</div>
+			<footer className={style.footer}>
+				<div className={classNames('wrap', style.container)}>
+					<Logo />
 					<ul className={style.list}>
 						{link.map(item => {
 							return (
@@ -61,7 +55,7 @@ const Footer = () => {
 				</div>
 
 				<Divider />
-				<div className={style.networks}>
+				<div className={classNames('wrap', style.networks)}>
 					<span className={style.copy}>© {getCurrentYear()}, КиноФест.  Все права защищены.</span>
 					<Networks />
 				</div>
