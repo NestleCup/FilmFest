@@ -18,7 +18,7 @@ const SwiperJenre = () => {
                 slidesPerView={5.5}
                 spaceBetween={30}
                 centeredSlides={true}
-                initialSlide={3}
+                initialSlide={5}
                 mousewheel={true}
                 modules={[FreeMode, Mousewheel]}
                 className="mySwiper"

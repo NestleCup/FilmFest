@@ -1,13 +1,14 @@
+import { useState } from 'react';
 import style from './AboutFilm.module.scss';
-import { useGetFilmsByIdQuery, useGetActorsByIdQuery, useGetFilmsVideosByIdQuery } from '../../services/KinopoiskApi'
+import { useGetFilmsByIdQuery } from '../../services/KinopoiskApi'
 import Breadcrumb from '../Breadcrumb/index';
 import { getRate } from '../../utils/helpers/getRate'
-import { useState } from 'react';
 import { Divider, Rate, ConfigProvider, Typography } from 'antd';
 import { useParams } from 'react-router-dom';
 import Actors from './Actors/Actors';
 import Reviews from './Reviews/Reviews';
 import Player from './Player/Player';
+import SimilarFilms from './SimilarFilms/SimilarFilms';
 
 const { Paragraph } = Typography;
 
@@ -84,6 +85,7 @@ const AboutFilm = () => {
 				</section>
 				<Actors />
 				<Reviews />
+				<SimilarFilms />
 			</ConfigProvider  >
 		</>
 	);

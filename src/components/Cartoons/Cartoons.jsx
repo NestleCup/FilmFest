@@ -1,11 +1,9 @@
 import React from 'react';
-import style from './Cartoons.module.scss'
-import { Rate, Typography, Spin, ConfigProvider } from 'antd';
+import { Rate } from 'antd';
 import { getRate } from '../../utils/helpers/getRate'
 import { Link } from 'react-router-dom';
 import { useGetComicsFilmQuery } from '../../services/KinopoiskApi';
 import Loading from '../Loading/Loading'
-const { Title } = Typography;
 
 
 const Cartoons = () => {
@@ -13,54 +11,38 @@ const Cartoons = () => {
 
   return (
     <>
-      <ConfigProvider
-        theme={{
-          components: {
-            Spin: {
-              colorPrimary: 'red'
-            },
-          },
-        }}
-      >
-        <div className={style.filmBlock}>
-          {error ? (
-            <>Oh no, there was an error</>
-          ) : isLoading ? (
-            <Loading/>
-            ) : data ? (
-            data.items.map(items => (
-              <Link to={`/${items.kinopoiskId}`} key={items.kinopoiskId} className={style.filmCard}>
-                <div className={style.filmCardImg}>
-                  <img src={items.posterUrl} alt='Poster'></img>
-                </div>
-                <div className={style.filmCardHover}>
-                  <Rate allowHalf
-                    count={5}
-                    disabled={true}
-                    defaultValue={getRate(Math.floor(items.ratingImdb))} />
-                  <div className={style.filmCardInfo}>
-                    <div className={style.filmCardTitle}>
-                      <Title level={3} className={style.title}>{items.nameRu}</Title>
-                    </div>
-                    <div className={style.filmCardGenre}>
-                      <span className={style.genres}>{items.genres.map(
-                        (genre) => genre.genre).join(', ')}</span>
-                    </div>
+      <div className='container'>
+        {error ? (
+          <>Oh no, there was an error</>
+        ) : isLoading ? (
+          <Loading />
+        ) : data ? (
+          data.items.map(items => (
+            <Link to={`/${items.kinopoiskId}`} key={items.kinopoiskId} className='film_link'>
+              <div className='film_poster'>
+                <img src={items.posterUrl} alt='Poster'></img>
+              </div>
+              <div className='film_hover'>
+                <Rate allowHalf
+                  count={5}
+                  disabled={true}
+                  defaultValue={getRate(Math.floor(items.ratingImdb))} />
+                <div className='film_info'>
+                  <div className='film-info_title'>
+                    <p className='title'>{items.nameRu}</p>
+                  </div>
+                  <div className='film-info_genre'>
+                    <span className='genre'>{items.genres.map(
+                      (genre) => genre.genre).join(', ')}</span>
                   </div>
                 </div>
-              </Link>
+              </div>
+            </Link>
+          ))
+        ) : null
+        }
+      </div>
 
-            ))
-
-          ) : null
-          }
-
-        </div>
-
-        {/* <div className="example">
-          <Spin />
-        </div> */}
-      </ConfigProvider>
     </>
   );
 };

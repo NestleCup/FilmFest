@@ -35,12 +35,8 @@ const MainPage = () => {
                   онлайн кинотеатр более чем 960 фильмов!
                 </h1>
               </div>
-              <div className={style.swiper}>
                 <SwiperContent
-                  data={data}
-                  error={error}
-                  isLoading={isLoading} />
-              </div>
+                  data={data}/>
             </div>
         </div>
       </section >

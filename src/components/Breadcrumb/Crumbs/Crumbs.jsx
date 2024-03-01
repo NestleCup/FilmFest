@@ -24,7 +24,7 @@ const Crumbs = () => {
       <Breadcrumb
         items={[
           {
-            title: 'Home',
+            title: <a href="/">Главная</a>,
           },
           {
             title: <a href="">Application Center</a>,

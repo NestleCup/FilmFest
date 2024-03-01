@@ -4,9 +4,8 @@ import MoviesPage from './pages/MoviesPage/MoviesPage';
 import SerialsPage from './pages/SerialsPage/SerialsPage';
 import CartoonsPage from './pages/CartoonsPage/CartoonsPage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
-
-import '../src/_global.css';
-
+import './style/_global.css';
+import './style/_cardFilm.css';
 
 import { AboutPage } from './pages/AboutPage/AboutPage';
 import Layout from './components/Layout/Layout';

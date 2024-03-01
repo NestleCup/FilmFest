@@ -53,6 +53,9 @@ export const KinopoiskApi = createApi({
 		getReviewsById: builder.query({
 			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/reviews?page=1&order=DATE_DESC`,
 		}),
+		getSimilarsById: builder.query({
+			query: (kinopoiskId) => `/api/v2.2/films/${kinopoiskId}/similars`,
+		}),
 	})
 })
 
@@ -67,5 +70,6 @@ export const {
 	useGetFilmsVideosByIdQuery,
 	useGetActorsByIdQuery,
 	useGetReviewsByIdQuery,
-	useGetJenreFilmByNumberQuery
+	useGetJenreFilmByNumberQuery,
+	useGetSimilarsByIdQuery
 } = KinopoiskApi

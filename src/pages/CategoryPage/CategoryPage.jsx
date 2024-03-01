@@ -6,7 +6,6 @@ const CategoryPage = () => {
 
     <section className='bg'>
       <div className='wrap position'>
-        <h1 className='title'> Категория фильмов</h1>
         <JenreResult />
       </div>
     </section>

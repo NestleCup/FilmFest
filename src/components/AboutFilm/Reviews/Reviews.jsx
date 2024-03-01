@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useGetReviewsByIdQuery } from '../../../services/KinopoiskApi'
 import style from './Reviews.module.scss'
-import { Divider, Typography, ConfigProvider, Modal, Button } from 'antd';
+import { Divider, Typography, ConfigProvider } from 'antd';
 import { useParams } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
-import { nanoid } from '@reduxjs/toolkit'
 import like from '../../../assets/img/icon/like.png'
 import dislike from '../../../assets/img/icon/dislike.png'
 import { getToFormateDate } from '../../../utils/helpers/getToFormateDate'
@@ -17,7 +16,7 @@ const Reviews = () => {
   // const arrr = [1, 2, 3, 4, 5, 6]
   // const sliceArrrr = arrr.slice(0, 3)
   // console.log(sliceArrrr);
-  // const slisedData = data.items.slice(0, 4)  
+  const slisedData = data?.items?.slice(0, 2)  
   return (
     <ConfigProvider
       theme={{
@@ -37,7 +36,7 @@ const Reviews = () => {
           ) : isLoading ? (
             <Loading />
           ) : data ? (
-            data.items.map(item => (
+            slisedData.map(item => (
               <div key={item.kinopoiskId} className={style.block}>
                 <div className={style.flex}>
                   <div >

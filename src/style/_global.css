@@ -47,7 +47,7 @@ a {
 .bg {
   min-height: 100vh;
   width: 100%;
-  background-image: url('./assets/img/bg.png');
+  background-image: url('../assets/img/bg.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -83,4 +83,13 @@ padding-top: 100px;
 h3{
   font-size: 24px;
   color: white;
+}
+.flex {
+  display: flex;
+}
+.swiper{
+ 
+}
+.res-slide{
+  
 }

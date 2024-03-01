@@ -1,16 +1,10 @@
-import React from 'react';
 import style from './Actor.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/swiper-bundle.css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
 import Loading from '../../Loading/Loading';
-import { nanoid } from '@reduxjs/toolkit'
 import { useGetActorsByIdQuery } from '../../../services/KinopoiskApi'
 import { useParams } from 'react-router-dom';
 
-const Actors = (props) => {
+const Actors = () => {
   const { kinopoiskId } = useParams()
   const { data, error, isLoading } = useGetActorsByIdQuery(kinopoiskId)
   return (
@@ -23,9 +17,9 @@ const Actors = (props) => {
         <Swiper
           freeMode={true}
           slidesPerView={5.5}
-          className="mySwiper"
           freeModeMomentum={false}
           mousewheel={true}
+
         >
           {error ? (
             <div>oh no errr</div>
@@ -34,7 +28,7 @@ const Actors = (props) => {
           ) : data ? (
             data.map(item => (
               item.nameRu &&
-              <SwiperSlide key={nanoid()}>
+              <SwiperSlide key={item.staffId}>
                 <div className={style.container}>
                   <div className={style.profile_img}>
                     <img src={item.posterUrl} alt='profile' />
@@ -49,10 +43,6 @@ const Actors = (props) => {
         <div className={style.right_shadow} />
       </div>
     </>
-    // {data.logoUrl === null ||
-    //   <div className={style.logo}>
-    //     <img src={data.logoUrl} alt="logo" />
-    //   </div>}
 
   )
 
