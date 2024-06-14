@@ -6,39 +6,35 @@
   flex-wrap: wrap;
 }
 
-.film_link:focus-visible .film_hover {
+.film__link:focus-visible .film__hover {
   opacity: 1;
   border: 2px solid rgb(255, 255, 255);
 }
 
-.film_link:hover .film_hover {
+.film__link:hover .film__hover {
   opacity: 1;
   box-shadow: 0px 0px 15px 0px #f1efefa7;
 }
 
-.film_poster {
+.film__poster {
   width: 230px;
   height: 335px;
-
 }
 
-.film_poster img {
+.film__poster-img {
   border-radius: 5px;
   height: 100%;
   width: 100%;
 }
 
-.film_link {
+.film__link {
   position: relative;
   width: 230px;
   margin-bottom: 10px;
   display: block;
-
 }
 
-
-
-.film_hover {
+.film__hover {
   position: absolute;
   padding: 15px;
   color: white;
@@ -46,23 +42,22 @@
   inset: 0;
   border-radius: 5px;
   background-color: rgb(0, 0, 0, 0.8);
-  transition: .5s;
+  transition: 0.5s;
   opacity: 0;
 }
-
-.filmCardRating {
-  font-size: 30px;
-  margin-bottom: auto;
-  border-radius: 100%;
+.title {
+  word-wrap: break-word;
 }
 
-.film-info_title {
+.film-info__title {
   font-size: 25px;
   color: white;
   margin: 20px 0;
 }
-
-.film-info_genre {
+.film__info {
+  word-wrap: break-word;
+}
+.film-info__genre {
   margin-top: 5px;
   word-break: break-word;
   color: rgb(172, 172, 173);
@@ -70,5 +65,7 @@
 
 .genre {
   text-transform: capitalize;
-
+}
+.padding {
+  padding-top: 10px;
 }

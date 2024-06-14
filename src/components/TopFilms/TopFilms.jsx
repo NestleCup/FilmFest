@@ -1,50 +1,74 @@
-import React from 'react';
-import { Rate } from 'antd';
+import React, { useMemo, useState } from 'react'
+import LazyLoad from 'react-lazyload'
+import { Rate } from 'antd'
 import { getRate } from '../../utils/helpers/getRate'
-import { Link } from 'react-router-dom';
-import Loading from '../Loading/Loading';
-import uuid from 'react-uuid';
+import { Link } from 'react-router-dom'
+import uuid from 'react-uuid'
+import { useGetTopFilmsQuery } from '../../services/KinopoiskApi'
+import PaginationFilms from '../PaginationFilms/PaginationFilms'
+import SkeletonLoad from '../SkeletonLoad/SkeletonLoad'
+import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
+export function TopFilms() {
+  const [pages, setPages] = useState(1)
 
-export function TopFilms(props) {
+  const { data, error, isLoading, isFetching } = useGetTopFilmsQuery(pages)
+
+  const docs = useMemo(
+    () =>
+      data?.items?.map((item) => ({
+        id: uuid(),
+        ...item,
+      })),
+    [data]
+  )
   return (
     <>
-      <div className='container'>
-        {props.error ? (
-          <>Oh no, there was an error</>
-        ) : props.isLoading ? (
-          <Loading />
-        ) : props.data ? (
-          props.data.items.map(films => (
-            <React.Fragment key={uuid()}>
-              <Link to={`/${films.kinopoiskId}`} className='film_link'>
-                <div className='film_poster'>
-                  <img src={films.posterUrl} alt='Poster' />
-                </div>
-                <div className='film_hover'>
-                  {films.ratingKinopoisk === null ||
-                    <Rate allowHalf
+      <div className="container">
+        {error ? (
+          <p className="error">Oh no, there was an error</p>
+        ) : isLoading || isFetching ? (
+          <div className="block">{skeletonArray}</div>
+        ) : (
+          docs.map((item) => (
+            <React.Fragment key={item.id}>
+              <Link to={`/${item.kinopoiskId}`} className="film__link">
+                <LazyLoad height={200}>
+                  <div className="film__poster">
+                    <img
+                      src={item.posterUrl}
+                      className="film__poster-img"
+                      alt="Poster"
+                    />
+                  </div>
+                </LazyLoad>
+                <div className="film__hover">
+                  {item.ratingKinopoisk === null || (
+                    <Rate
+                      allowHalf
                       count={5}
                       disabled={true}
-                      defaultValue={getRate(Math.floor(films.ratingKinopoisk))} />
-                  }
-                  <div className='film_info'>
-                    <div >
-                      <p className='film-info_title'>{films.nameRu}</p>
+                      defaultValue={getRate(Math.floor(item.ratingKinopoisk))}
+                    />
+                  )}
+                  <div className="film__info">
+                    <div>
+                      <p className="film-info__title">{item.nameRu}</p>
                     </div>
-                    <div className='film-info_genre'>
-                      <span className='genre'>{films.genres.map(
-                        (genre) => genre.genre).join(', ')}</span>
+                    <div className="film-info__genre">
+                      <span className="genre">
+                        {item.genres.map((genre) => genre.genre).join(', ')}
+                      </span>
                     </div>
                   </div>
                 </div>
               </Link>
             </React.Fragment>
           ))
-        ) : null
-        }
+        )}
       </div>
-
+      <div className="pagination">
+        <PaginationFilms pages={pages} setPages={setPages} data={data} />
+      </div>
     </>
-  );
-
+  )
 }

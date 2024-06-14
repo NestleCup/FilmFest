@@ -1,77 +1,114 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react'
 import { useGetReviewsByIdQuery } from '../../../services/KinopoiskApi'
 import style from './Reviews.module.scss'
-import { Divider, Typography, ConfigProvider } from 'antd';
-import { useParams } from 'react-router-dom';
-import Loading from '../../Loading/Loading';
+import { Divider, Typography, ConfigProvider, Button } from 'antd'
+import { useParams } from 'react-router-dom'
+import Loading from '../../Loading/Loading'
 import like from '../../../assets/img/icon/like.png'
 import dislike from '../../../assets/img/icon/dislike.png'
 import { getToFormateDate } from '../../../utils/helpers/getToFormateDate'
-const { Paragraph } = Typography;
+import ModalWindow from './ModalWindow/ModalWindow'
+import uuid from 'react-uuid'
+
+const { Paragraph } = Typography
 
 const Reviews = () => {
   const { kinopoiskId } = useParams()
-  const [ellipsis, setEllipsis] = useState(true);
+  const [ellipsis] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectItem, setSelectItem] = useState(null)
   const { data, error, isLoading } = useGetReviewsByIdQuery(kinopoiskId)
-  // const arrr = [1, 2, 3, 4, 5, 6]
-  // const sliceArrrr = arrr.slice(0, 3)
-  // console.log(sliceArrrr);
-  const slisedData = data?.items?.slice(0, 2)  
-  return (
+
+  const slisedData = useMemo(
+    () =>
+      data?.items?.slice(0, 2).map((item) => ({
+        id: uuid(),
+        ...item,
+      })),
+    [data]
+  )
+
+  const showModal = (item) => () => {
+    setSelectItem(item)
+    setIsModalOpen(true)
+  }
+  const handleOk = () => {
+    setIsModalOpen(false)
+  }
+  const handleCancel = () => {
+    setIsModalOpen(false)
+  }
+  return data?.items?.length ? (
     <ConfigProvider
       theme={{
         token: {
-          fontSize: 14,
-          colorSplit: '#a7a7a791'
+          fontSize: 15,
+          colorText: '#a5a1b2',
+          colorSplit: '#1C1E2A',
+          colorLink: '#FF0000',
         },
       }}
     >
-      <div className='wrap'>
-        <h3 className='title'>
-          Рецензии зрителей
-        </h3 >
-        <div >
+      <div className="wrap">
+        <p className="title">Рецензии зрителей</p>
+        <div className={style.container}>
           {error ? (
-            <div>oh no errr</div>
+            <div className="error">oh no errr</div>
           ) : isLoading ? (
             <Loading />
-          ) : data ? (
-            slisedData.map(item => (
-              <div key={item.kinopoiskId} className={style.block}>
+          ) : (
+            slisedData.map((item) => (
+              <div key={item.id} className={style.block}>
                 <div className={style.flex}>
-                  <div >
-                    <p className={style.title}>{item.author}</p>
-                    <p className={style.subtitle}>{item.title}</p>
-                  </div>
+                  <p className={style.title}>{item.author}</p>
                   <div className={style.flex}>
-                    <div className={style.bg}>
-                      <div className={style.flex}>
-                        <div className={style.img}>
-                          <img src={like} alt='like' />
-                        </div>
-                        <span>{item.positiveRating}</span>
-                      </div>
-                      <div className={style.flex}>
-                        <div className={style.img}>
-                          <img src={dislike} alt='dislike' />
-                        </div>
-                        <span>{item.negativeRating}</span>
-                      </div>
+                    <div className={style.container__grade}>
+                      <img src={like} alt="like" />
+                      <span className={style.positiveRating}>
+                        {item.positiveRating}
+                      </span>
                     </div>
-                    <span>{getToFormateDate(item.date, 'D MMMM YYYY')}</span>
+                    <div className={style.container__grade}>
+                      <img src={dislike} alt="dislike" />
+                      <span className={style.negativeRating}>
+                        {item.negativeRating}
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <p className={style.subtitle}>{item.title}</p>
                 <Divider />
-                <Paragraph ellipsis={ellipsis ? { rows: 3, expandable: true, symbol: 'подробнее' } : false}>
+                {/* <pre className="discription"> */}
+                <Paragraph
+                  ellipsis={
+                    ellipsis
+                      ? { rows: 3, expandable: true, symbol: ' ' }
+                      : false
+                  }
+                >
+                  <Button type="link" onClick={showModal(item)}>
+                    подробнее...
+                  </Button>
                   {item.description}
                 </Paragraph>
+                {/* </pre> */}
+
+                <span className={style.date}>
+                  {getToFormateDate(item.date, 'D MMMM YYYY')}
+                </span>
               </div>
             ))
-          ) : null}
+          )}
         </div>
+        <ModalWindow
+          item={selectItem}
+          handleOk={handleOk}
+          handleCancel={handleCancel}
+          isModalOpen={isModalOpen}
+        />
       </div>
     </ConfigProvider>
-  );
+  ) : null
 }
 
-export default Reviews;
+export default Reviews

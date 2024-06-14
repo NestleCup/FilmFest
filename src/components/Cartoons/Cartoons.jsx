@@ -1,51 +1,74 @@
-import React from 'react';
-import { Rate } from 'antd';
-import { getRate } from '../../utils/helpers/getRate'
-import { Link } from 'react-router-dom';
-import { useGetComicsFilmQuery } from '../../services/KinopoiskApi';
-import Loading from '../Loading/Loading'
-import uuid from 'react-uuid';
+import React, { useMemo, useState } from 'react'
 
+import { Rate } from 'antd'
+import { getRate } from '../../utils/helpers/getRate'
+import { Link } from 'react-router-dom'
+import { useGetComicsFilmQuery } from '../../services/KinopoiskApi'
+import Loading from '../Loading/Loading'
+import uuid from 'react-uuid'
+import PaginationFilms from '../PaginationFilms/PaginationFilms'
+import SkeletonLoad from '../SkeletonLoad/SkeletonLoad'
+import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
 
 const Cartoons = () => {
-  const { data, error, isLoading } = useGetComicsFilmQuery();
-
+  const [pages, setPages] = useState(1)
+  const { data, error, isLoading } = useGetComicsFilmQuery(pages)
+  const docs = useMemo(
+    () =>
+      data?.items?.map((item) => ({
+        id: uuid(),
+        ...item,
+      })),
+    [data]
+  )
   return (
     <>
-      <div className='container'>
+      <div className="container">
         {error ? (
           <>Oh no, there was an error</>
         ) : isLoading ? (
-          <Loading />
-        ) : data ? (
-          data.items.map(items => (
-            <Link to={`/${items.kinopoiskId}`} key={uuid()} className='film_link'>
-              <div className='film_poster'>
-                <img src={items.posterUrl} alt='Poster'></img>
+          <div className="block">{skeletonArray}</div>
+        ) : (
+          docs.map((item) => (
+            <Link
+              to={`/${item.kinopoiskId}`}
+              key={item.id}
+              className="film__link"
+            >
+              <div className="film__poster">
+                <img
+                  src={item.posterUrl}
+                  className="film__poster-img "
+                  alt="Poster"
+                ></img>
               </div>
-              <div className='film_hover'>
-                <Rate allowHalf
+              <div className="film__hover">
+                <Rate
+                  allowHalf
                   count={5}
                   disabled={true}
-                  defaultValue={getRate(Math.floor(items.ratingImdb))} />
-                <div className='film_info'>
-                  <div className='film-info_title'>
-                    <p className='title'>{items.nameRu}</p>
+                  defaultValue={getRate(Math.floor(item.ratingImdb))}
+                />
+                <div className="film__info">
+                  <div className="film-info__title">
+                    <p className="title">{item.nameRu}</p>
                   </div>
-                  <div className='film-info_genre'>
-                    <span className='genre'>{items.genres.map(
-                      (genre) => genre.genre).join(', ')}</span>
+                  <div className="film-info__genre">
+                    <span className="genre">
+                      {item.genres.map((genre) => genre.genre).join(', ')}
+                    </span>
                   </div>
                 </div>
               </div>
             </Link>
           ))
-        ) : null
-        }
+        )}
       </div>
-
+      <div className="pagination">
+        <PaginationFilms pages={pages} setPages={setPages} data={data} />
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default Cartoons;
+export default Cartoons

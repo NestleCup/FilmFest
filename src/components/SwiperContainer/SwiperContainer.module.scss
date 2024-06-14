@@ -1,5 +1,6 @@
 .wrapper {
   position: relative;
+  margin-bottom: 30px;
 
   .left_shadow {
     left: 0;
@@ -9,7 +10,11 @@
     width: 100px;
     position: absolute;
     background: rgb(0, 0, 0);
-    background: linear-gradient(90deg, rgba(16, 17, 24, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(16, 17, 24, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   .right_shadow {
@@ -20,11 +25,28 @@
     width: 100px;
     position: absolute;
     background: rgb(255, 255, 255);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 9%, rgba(16, 17, 24, 1) 100%);
-
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 9%,
+      rgba(16, 17, 24, 1) 100%
+    );
   }
-.slider{
-  padding-top: 20px;
+  .slider {
+    padding-top: 20px;
+  }
+}
+.swiper-container {
+  width: 480px;
 }
 
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
+  }
 }

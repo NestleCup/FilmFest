@@ -1,13 +1,15 @@
 import React from 'react';
-import SearchResult from '../../components/HeaderPart/Search/component/SearchResult/SearchResult';
-
+import Search from '../../components/Search/Search';
+import PaginationFilms from '../../components/PaginationFilms/PaginationFilms';
 const SearchPage = () => {
     return (
         <section className='bg'>
-            <div className='wrap'>
-                <div className='position'>
-                    <h1 className='title'>search</h1>
-                    <SearchResult/>
+            <div className='bg__fill'>
+                <div className='wrap__search'>
+                    <div className='position'>
+                        <p className='title'>Поиск фильмов</p>
+                        <Search />
+                    </div>
                 </div>
             </div>
         </section>

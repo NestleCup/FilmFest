@@ -1,15 +1,33 @@
-.flex{
-  
-  box-sizing: border-box;
-  overflow: hidden;
-  .slide__img {
-    img {
-            border-radius: 19px;
-    height: 500px;
-          
-            max-width: 100%;
-          }
+.wrapper {
+  position: relative;
+
+  .right_shadow {
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10;
+    width: 100px;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 9%,
+      rgba(16, 17, 24, 1) 100%
+    );
   }
 
+  .slider {
+    margin-top: 30px;
+    .slide__img {
+      height: 500px;
+      @media screen and (max-width: 600px) {
+        height: 170px;
+      }
+      img {
+        border-radius: 16px;
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+  }
 }
-   

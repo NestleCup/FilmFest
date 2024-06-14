@@ -1,19 +1,24 @@
-import React from 'react';
+import React from 'react'
 import style from './Player.module.scss'
 import { useGetFilmsVideosByIdQuery } from '../../../services/KinopoiskApi'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
+import player from '../../../assets/img/icon/player.png'
 
 const Player = () => {
   const { kinopoiskId } = useParams()
 
-  const { data, error, isLoading } = useGetFilmsVideosByIdQuery(kinopoiskId)
-  return (
-    <div className='wrap'>
-      {/* <video controls width="550">
-        <source src="/media/cc0-videos/flower.webm" type="video/webm" />
-      </video> */}
-    </div>
-  );
-};
+  const { data } = useGetFilmsVideosByIdQuery(kinopoiskId)
+  const item = data?.items[1]?.url
 
-export default Player;
+  return data?.items?.length ? (
+    <div className="wrap">
+      <a href={item} target="_blank" rel="noreferrer">
+        <div className={style.bg}>
+          <img src={player} alt="" />
+        </div>
+      </a>
+    </div>
+  ) : null
+}
+
+export default Player

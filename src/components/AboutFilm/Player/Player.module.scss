@@ -1,0 +1,23 @@
+.bg {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: rgb(9, 8, 12);
+  transition: 0.5s;
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+    margin-bottom: 0;
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.bg:hover {
+  background-color: #323237;
+}

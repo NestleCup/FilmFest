@@ -1,16 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap');
-
 * {
   font-family: 'Jura', sans-serif;
   box-sizing: inherit;
-
 }
 
 *::before,
 *::after {
   box-sizing: inherit;
   font-family: 'Jura', sans-serif;
-
 }
 
 body {
@@ -43,6 +39,16 @@ a {
     padding: 35px 15px 0 15px;
   }
 }
+.wrap__search {
+  margin: 0 auto;
+  padding: 0 250px;
+  background-color: var(--color-white);
+  height: 100%;
+
+  @media (max-width: 768px) {
+    padding: 35px 15px 0 15px;
+  }
+}
 
 .bg {
   min-height: 100vh;
@@ -53,7 +59,14 @@ a {
   background-size: 100%;
   background-attachment: fixed;
 }
-
+.bg__fill {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000000b0;
+  background-position: center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
 .example {
   position: absolute;
   width: 100%;
@@ -66,7 +79,7 @@ a {
 }
 
 .position {
-  padding-top: 100px;
+  padding-top: 70px;
 }
 
 .title {
@@ -74,14 +87,62 @@ a {
   color: white;
   font-weight: bold;
 }
-
-.spin {
+.pagination {
+  padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: 50vh;
+  justify-content: center;
+}
+.spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .flex {
   display: flex;
+}
+.search-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.search-padding {
+  padding-top: 50px;
+}
+.active {
+  color: aliceblue;
+}
+.error {
+  color: rgb(230, 51, 51);
+  font-size: 20px;
+}
+.block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  color: rgb(236, 50, 50);
+}
+
+.discription {
+  white-space: pre-wrap;
+}
+.ant-skeleton-content {
+  .ant-skeleton-title {
+    background-image: linear-gradient(
+      90deg,
+      rgba(98, 98, 98, 0.284) 25%,
+      rgba(80, 80, 80, 0.37) 75%
+    ) !important;
+  }
+}
+.swiper {
+  height: 100%;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

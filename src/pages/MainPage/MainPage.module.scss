@@ -1,21 +1,24 @@
 .main {
   height: 100%;
+  .title {
+    font-size: calc(24px + 16 * (100vw / 1280));
 
-  .position {
-    padding-top: 90px;
+    padding-top: 100px;
+    margin: 0 auto;
+    // max-width: 50%;
+    color: white;
+    text-align: center;
+    @media (max-width: 650px) {
+      padding-top: 50px;
+      width: 100%;
+    }
   }
 }
 
-.title {
-  margin: 0 auto;
-  max-width: 50%;
-  color: white;
-  text-align: center;
-  font-size: clamp(16px, 3vw, 24px);
-}
-
-.paginate {
-  margin: 20px 0 20px 0;
+.topFilm__title {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  .title__img {
+    width: 50px;
+  }
 }

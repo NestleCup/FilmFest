@@ -1,0 +1,30 @@
+.header {
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 300;
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #18181b;
+      transition: 0.5s;
+      border-radius: 100px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+    }
+
+    .img:hover {
+      box-shadow: 0px 0px 6px 3px rgb(157 157 164 / 65%);
+    }
+  }
+}

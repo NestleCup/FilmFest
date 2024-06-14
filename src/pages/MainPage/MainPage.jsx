@@ -1,65 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react'
 import style from './MainPage.module.scss'
-import { useGetTopFilmsQuery } from '../../services/KinopoiskApi';
-import { Typography, ConfigProvider } from 'antd';
-import SwiperMain from '../../components/SwiperMain/SwiperMain';
-import { TopFilms } from '../../components/TopFilms/TopFilms';
-import PaginationFilms from '../../components/PaginationFilms/PaginationFilms';
-
-const { Title } = Typography;
-
+import SwiperMain from '../../components/SwiperMain/SwiperMain'
+import { TopFilms } from '../../components/TopFilms/TopFilms'
+import icon from '../../assets/img/icon/top.png'
 const MainPage = () => {
-  const [pages, setPages] = useState(1)
-  const { data, error, isLoading } = useGetTopFilmsQuery(pages);
   return (
-
-    <ConfigProvider
-      theme={{
-        token: {
-          colorText: 'white',
-          Pagination: {
-            colorTextDisabled: 'red',
-            colorText: 'white',
-            colorPrimaryHover: 'red',
-            colorPrimary: 'red'
-          },
-        },
-      }}
-    >
-      <section className={style.main} >
-        <div className='bg' >
-            <div className={style.position}>
-              <div className={style.title}>
-                <h1>
-                  Добро пожаловать на Кинофест -
-                  онлайн кинотеатр более чем 960 фильмов!
-                </h1>
-              </div>
-                <SwiperMain
-                  data={data}/>
-            </div>
-        </div>
-      </section >
-      <section className='wrap'>
-        <div className={style.topFilm}>
-          <Title level={2}>Топ коллекция</Title>
-          <TopFilms
-            data={data}
-            error={error}
-            isLoading={isLoading} />
+    <>
+      <section className={style.main}>
+        <div className="bg">
+          <h1 className={style.title}>КиноФест - твой путь в мир кино!</h1>
+          <SwiperMain />
         </div>
       </section>
-      <div className={style.paginate}>
-        <PaginationFilms
-          data={data}
-          error={error}
-          isLoading={isLoading}
-          pages={pages}
-          setPages={setPages}
-        />
-      </div>
-    </ConfigProvider>
-  );
-};
+      <section className="wrap">
+        <div className={style.topFilm}>
+          <div className={style.topFilm__title}>
+            <p className="title">Топ коллекция</p>
+            <div className={style.title__img}>
+              <img src={icon} alt="icon" width={45} />
+            </div>
+          </div>
+          <TopFilms />
+        </div>
+      </section>
+    </>
+  )
+}
 
-export default MainPage;
+export default MainPage

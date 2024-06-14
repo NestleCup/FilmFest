@@ -1,0 +1,22 @@
+.blok__link {
+  .link {
+  }
+  .link:after {
+    content: '>';
+    transition: 0.5s;
+    color: rgba(255, 255, 255, 0.692);
+    margin: 10px;
+    position: relative;
+    top: 2px;
+    left: 10px;
+  }
+
+  .link:hover:after {
+    content: '>';
+    padding-left: 10px;
+    color: red;
+  }
+}
+.padding {
+  margin-bottom: 20px;
+}
