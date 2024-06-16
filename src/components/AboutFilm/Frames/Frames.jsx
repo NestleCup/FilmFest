@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import style from './Frames.module.scss'
 import classNames from 'classnames'
 import { Image } from 'antd'
-import Loading from '../../Loading/Loading'
 import uuid from 'react-uuid'
 
 const Frames = () => {
@@ -26,7 +25,13 @@ const Frames = () => {
       {error ? (
         <div className="error">oh no errr</div>
       ) : isLoading ? (
-        <Loading />
+        <div className="container">
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+        </div>
       ) : data ? (
         <div className={classNames('wrap', style.container)}>
           {slisedData.map((item) => (

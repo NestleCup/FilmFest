@@ -2,7 +2,6 @@ import React, { useMemo } from 'react'
 import uuid from 'react-uuid'
 import { Link } from 'react-router-dom'
 import { Rate } from 'antd'
-import { getRate } from '../../../../utils/helpers/getRate'
 import { skeletonArray } from '../../../../utils/helpers/getSkeletonArray'
 
 const SearchResult = ({ data, search, isLoading }) => {

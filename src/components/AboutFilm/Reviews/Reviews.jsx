@@ -3,7 +3,6 @@ import { useGetReviewsByIdQuery } from '../../../services/KinopoiskApi'
 import style from './Reviews.module.scss'
 import { Divider, Typography, ConfigProvider, Button } from 'antd'
 import { useParams } from 'react-router-dom'
-import Loading from '../../Loading/Loading'
 import like from '../../../assets/img/icon/like.png'
 import dislike from '../../../assets/img/icon/dislike.png'
 import { getToFormateDate } from '../../../utils/helpers/getToFormateDate'
@@ -55,7 +54,13 @@ const Reviews = () => {
           {error ? (
             <div className="error">oh no errr</div>
           ) : isLoading ? (
-            <Loading />
+            <div className="container">
+              <div className="skeleton-swiper"></div>
+              <div className="skeleton-swiper"></div>
+              <div className="skeleton-swiper"></div>
+              <div className="skeleton-swiper"></div>
+              <div className="skeleton-swiper"></div>
+            </div>
           ) : (
             slisedData.map((item) => (
               <div key={item.id} className={style.block}>

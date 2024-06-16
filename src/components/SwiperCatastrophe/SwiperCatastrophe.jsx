@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { SwiperContainer } from '../SwiperContainer/SwiperContainer'
 import { useGetCatastropheFilmsQuery } from '../../services/KinopoiskApi'
-import Loading from '../Loading/Loading'
 import { SwiperSlide } from 'swiper/react'
 import uuid from 'react-uuid'
 import { Link } from 'react-router-dom'
@@ -26,7 +25,13 @@ const SwiperCatastrophe = () => {
         {error ? (
           <div>oh no errr</div>
         ) : isLoading ? (
-          <Loading />
+          <div className="container">
+            <div className="skeleton-swiper"></div>
+            <div className="skeleton-swiper"></div>
+            <div className="skeleton-swiper"></div>
+            <div className="skeleton-swiper"></div>
+            <div className="skeleton-swiper"></div>
+          </div>
         ) : data ? (
           data.items.map((films) => (
             <SwiperSlide className="res-slide" key={uuid()}>

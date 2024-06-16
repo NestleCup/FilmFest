@@ -2,7 +2,6 @@ import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useGetSimilarsByIdQuery } from '../../../services/KinopoiskApi'
-import Loading from '../../Loading/Loading'
 import uuid from 'react-uuid'
 import { SwiperSlide } from 'swiper/react'
 import { SwiperContainer } from '../../SwiperContainer/SwiperContainer'
@@ -25,7 +24,13 @@ const SimilarFilms = () => {
       {error ? (
         <div className="error">oh no errr</div>
       ) : isLoading ? (
-        <Loading />
+        <div className="container">
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+        </div>
       ) : (
         docs.map((films) => (
           <SwiperSlide className="res-slide" key={uuid()}>

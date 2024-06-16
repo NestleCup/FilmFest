@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react'
 import { useGetRomanticFilmsQuery } from '../../services/KinopoiskApi'
-import Loading from '../Loading/Loading'
 import uuid from 'react-uuid'
 import { Link } from 'react-router-dom'
 import { Rate } from 'antd'
 import { getRate } from '../../utils/helpers/getRate'
 import PaginationFilms from '../PaginationFilms/PaginationFilms'
+import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
 
 const RomanticFilms = () => {
   const [pages, setPages] = useState(1)
@@ -23,9 +23,9 @@ const RomanticFilms = () => {
       <p className="title">Романтические фильмы</p>
       <div className="container">
         {error ? (
-          <>Oh no, there was an error</>
+          <div className="err">Oh no, there was an error</div>
         ) : isLoading ? (
-          <Loading />
+          <div className="block">{skeletonArray}</div>
         ) : (
           docs.map((item) => (
             <Link

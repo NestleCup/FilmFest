@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import style from './SwiperMain.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Loading from '../Loading/Loading'
 import uuid from 'react-uuid'
 import 'swiper/css'
 import 'swiper/css/autoplay'
@@ -32,7 +31,11 @@ const SwiperMain = () => {
         {error ? (
           <div className="error">Oh no, there was an error</div>
         ) : isLoading ? (
-          <Loading />
+          <div className="container">
+            <div className="skeleton-main"></div>
+            <div className="skeleton-main"></div>
+            <div className="skeleton-main"></div>
+          </div>
         ) : data ? (
           data?.items?.map((item) => (
             <SwiperSlide key={uuid()}>

@@ -1,13 +1,10 @@
 import React, { useMemo, useState } from 'react'
-
 import { Rate } from 'antd'
 import { getRate } from '../../utils/helpers/getRate'
 import { Link } from 'react-router-dom'
 import { useGetComicsFilmQuery } from '../../services/KinopoiskApi'
-import Loading from '../Loading/Loading'
 import uuid from 'react-uuid'
 import PaginationFilms from '../PaginationFilms/PaginationFilms'
-import SkeletonLoad from '../SkeletonLoad/SkeletonLoad'
 import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
 
 const Cartoons = () => {
@@ -25,7 +22,7 @@ const Cartoons = () => {
     <>
       <div className="container">
         {error ? (
-          <>Oh no, there was an error</>
+          <div className="err">Oh no, there was an error</div>
         ) : isLoading ? (
           <div className="block">{skeletonArray}</div>
         ) : (

@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react'
 import { useGetFamilyCollectionQuery } from '../../services/KinopoiskApi'
-import Loading from '../Loading/Loading'
 import uuid from 'react-uuid'
 import { Link } from 'react-router-dom'
 import { Rate } from 'antd'

@@ -33,7 +33,7 @@ export const SwiperContainer = ({ children, title }) => {
         <div className={style.left_shadow}></div>
         <Swiper
           breakpoints={breakpoints}
-          slidesPerView={4.5}
+          slidesPerView={5.5}
           spaceBetween={10}
           className={classNames('wrap', style.slider)}
           initialSlide={0}

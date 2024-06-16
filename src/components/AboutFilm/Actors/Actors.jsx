@@ -1,6 +1,5 @@
 import style from './Actor.module.scss'
 import { SwiperSlide } from 'swiper/react'
-import Loading from '../../Loading/Loading'
 import { useGetActorsByIdQuery } from '../../../services/KinopoiskApi'
 import { useParams } from 'react-router-dom'
 import uuid from 'react-uuid'
@@ -22,7 +21,13 @@ const Actors = () => {
       {error ? (
         <div className="error">oh no errr</div>
       ) : isLoading ? (
-        <Loading />
+        <div className="container">
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+          <div className="skeleton-swiper"></div>
+        </div>
       ) : (
         docs.map(
           (item) =>

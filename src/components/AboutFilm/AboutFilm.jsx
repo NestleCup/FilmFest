@@ -27,7 +27,12 @@ const AboutFilm = () => {
       {error ? (
         <p className="error">Error</p>
       ) : isLoading ? (
-        <div>Loading</div>
+        <div className="container-skeleton wrap">
+          <div className="skeleton"></div>
+          <div className="skeleton"></div>
+
+          <div className="skeleton"></div>
+        </div>
       ) : data ? (
         <div className={style.container}>
           {data.coverUrl ? (

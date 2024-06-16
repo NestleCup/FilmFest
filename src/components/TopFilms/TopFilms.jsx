@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import uuid from 'react-uuid'
 import { useGetTopFilmsQuery } from '../../services/KinopoiskApi'
 import PaginationFilms from '../PaginationFilms/PaginationFilms'
-import SkeletonLoad from '../SkeletonLoad/SkeletonLoad'
 import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
 export function TopFilms() {
   const [pages, setPages] = useState(1)
@@ -27,7 +26,10 @@ export function TopFilms() {
         {error ? (
           <p className="error">Oh no, there was an error</p>
         ) : isLoading || isFetching ? (
-          <div className="block">{skeletonArray}</div>
+          <>
+            <div className="skeleton"></div>
+            <div className="block">{skeletonArray}</div>
+          </>
         ) : (
           docs.map((item) => (
             <React.Fragment key={item.id}>
