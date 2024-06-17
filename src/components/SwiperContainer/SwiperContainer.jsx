@@ -5,26 +5,18 @@ import { FreeMode } from 'swiper/modules'
 import 'swiper/css'
 
 export const SwiperContainer = ({ children, title }) => {
-  const breakpoints = [
-    {
-      breakpoint: 768,
-      styles: {
-        slidesPerView: 1,
-      },
+  const breakpoints = {
+    320: {
+      slidesPerView: 1,
     },
-    {
-      breakpoint: 1024,
-      styles: {
-        slidesPerView: 2,
-      },
+    768: {
+      slidesPerView: 2,
     },
-    {
-      breakpoint: 1280,
-      styles: {
-        slidesPerView: 3,
-      },
+
+    1404: {
+      slidesPerView: 5.5,
     },
-  ]
+  }
 
   return (
     <>

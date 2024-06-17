@@ -9,6 +9,18 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 
 const SwiperJenre = () => {
+  const breakpoints = {
+    320: {
+      slidesPerView: 3,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+
+    1404: {
+      slidesPerView: 5.5,
+    },
+  }
   return (
     <>
       <div className={style.wrapper}>
@@ -16,6 +28,7 @@ const SwiperJenre = () => {
         <Swiper
           slidesPerView={5.5}
           spaceBetween={10}
+          breakpoints={breakpoints}
           className={classNames('wrap', style.swiperSlide)}
           initialSlide={0}
           freeMode={true}

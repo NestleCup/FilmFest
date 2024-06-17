@@ -13,7 +13,18 @@ import { useGetTopFilmsQuery } from '../../services/KinopoiskApi'
 const SwiperMain = () => {
   const [pages] = useState(1)
   const { data, error, isLoading } = useGetTopFilmsQuery(pages)
+  const breakpoints = {
+    320: {
+      slidesPerView: 3,
+    },
+    768: {
+      slidesPerView: 2,
+    },
 
+    1404: {
+      slidesPerView: 3.5,
+    },
+  }
   return (
     <div className={style.wrapper}>
       <Swiper
@@ -21,6 +32,7 @@ const SwiperMain = () => {
         spaceBetween={30}
         className={classNames('wrap', style.slider)}
         initialSlide={0}
+        breakpoints={breakpoints}
         freeMode={true}
         // mousewheel={true}
         modules={[FreeMode, Autoplay]}

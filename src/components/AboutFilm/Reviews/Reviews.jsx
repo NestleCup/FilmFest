@@ -41,7 +41,7 @@ const Reviews = () => {
     <ConfigProvider
       theme={{
         token: {
-          fontSize: 15,
+          fontSize: 20,
           colorText: '#a5a1b2',
           colorSplit: '#1C1E2A',
           colorLink: '#FF0000',

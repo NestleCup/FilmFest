@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Input,  ConfigProvider } from 'antd'
+import { Input, ConfigProvider } from 'antd'
 import {
   useGetFilmsBySearchQuery,
   useLazyGetFilmsBySearchQuery,
 } from '../../services/KinopoiskApi'
 import { useDebounce } from '../../hooks/useDebounce'
 import SearchResult from './component/SearchResult/SearchResult'
-import PaginationFilms from '../PaginationFilms/PaginationFilms'
 
 const Search = () => {
-  const [pages, setPages] = useState(1)
-
   const [search, setSearch] = useState('')
   const debounced = useDebounce(search)
 
-  const { data, isFetching, isError, isLoading, pending } =
-    useGetFilmsBySearchQuery(debounced, { skip: debounced.lenght < 3 })
+  const { data, isError, isLoading } = useGetFilmsBySearchQuery(debounced, {
+    skip: debounced.lenght < 3,
+  })
 
   const [fetchRepos] = useLazyGetFilmsBySearchQuery()
   const clickHandler = (keyword) => {
@@ -55,9 +53,6 @@ const Search = () => {
 
       <div className="search-flex search-padding">
         <SearchResult data={data} isLoading={isLoading} search={search} />
-        <div>
-          {/* <PaginationFilms pages={pages} setPages={setPages} data={data} /> */}
-        </div>
       </div>
     </ConfigProvider>
   )

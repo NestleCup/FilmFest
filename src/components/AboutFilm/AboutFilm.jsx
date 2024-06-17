@@ -19,7 +19,7 @@ const AboutFilm = () => {
         token: {
           colorLink: '#fa4d4d',
           colorText: 'white',
-          fontSize: 20,
+          fontSize: 26,
           fontFamilyCode: 'Jura',
         },
       }}
@@ -30,7 +30,6 @@ const AboutFilm = () => {
         <div className="container-skeleton wrap">
           <div className="skeleton"></div>
           <div className="skeleton"></div>
-
           <div className="skeleton"></div>
         </div>
       ) : data ? (
@@ -52,21 +51,25 @@ const AboutFilm = () => {
                     <img src={data.logoUrl} alt="logo" />
                   </div>
                 ) : (
-                  <h2>{data.nameRu}</h2>
+                  <h2 className="title">{data.nameRu}</h2>
                 )}
                 <div className="flex">
-                  <div className={style.rating}>
-                    <div className={style.icon__rating}>
-                      <img src={kinopoisk} alt="imdb" />
+                  {data.ratingKinopoisk ? (
+                    <div className={style.rating}>
+                      <div className={style.icon__rating}>
+                        <img src={kinopoisk} alt="imdb" />
+                      </div>
+                      <p>{data?.ratingKinopoisk}</p>
                     </div>
-                    <p>{data?.ratingKinopoisk}</p>
-                  </div>
-                  <div className={style.rating}>
-                    <div className={style.icon__rating}>
-                      <img src={imdb} alt="imdb" />
+                  ) : null}
+                  {data.ratingImdb ? (
+                    <div className={style.rating}>
+                      <div className={style.icon__rating}>
+                        <img src={imdb} alt="imdb" />
+                      </div>
+                      <p>{data?.ratingImdb}</p>
                     </div>
-                    <p>{data?.ratingImdb}</p>
-                  </div>
+                  ) : null}
                 </div>
                 <div className={style.about}>
                   <span className={style.about__year}>{data.year} г</span>
