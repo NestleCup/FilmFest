@@ -83,6 +83,15 @@ export const KinopoiskApi = createApi({
         `/api/v2.2/films/${kinopoiskId}/external_sources?page=1`,
     }),
   }),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat({
+  //     onError(error, { dispatch }) {
+  //       if (error.status === 400) {
+  //         console.error('Ошибка: статус 400')
+  //         // Дополнительная обработка ошибки статуса 400
+  //       }
+  //     },
+  //   }),
 })
 
 export const {

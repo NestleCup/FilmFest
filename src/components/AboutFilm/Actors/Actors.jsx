@@ -16,7 +16,7 @@ const Actors = () => {
       })),
     [data]
   )
-  return (
+  return data?.items?.length ? (
     <SwiperContainer title="Актеры и создатели">
       {error ? (
         <div className="error">oh no errr</div>
@@ -49,7 +49,7 @@ const Actors = () => {
         )
       )}
     </SwiperContainer>
-  )
+  ) : null
 }
 
 export default Actors

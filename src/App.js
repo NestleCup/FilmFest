@@ -33,6 +33,7 @@ const App = () => {
         <Route index element={<MainPage />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
+      <Route path="/404" element={<ErrorPage />} />
     </Routes>
   )
 }
