@@ -15,7 +15,6 @@ import RomanticPage from './pages/RomanticPage/RomanticPage'
 import CatastrophePage from './pages/CatastrophePage/CatastrophePage'
 import ModalWindow from './components/AboutFilm/Reviews/ModalWindow/ModalWindow'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
-
 const App = () => {
   return (
     <Routes>

@@ -36,10 +36,15 @@
     align-items: center;
     transition: transform 0.9s;
     border: solid 0.01px #4848487c;
+    @media screen and (max-width: 800px) {
+      max-height: 150px;
+    }
 
     .slider_img {
       img {
         max-height: 100%;
+        @media screen and (max-width: 800px) {
+        }
       }
     }
   }
