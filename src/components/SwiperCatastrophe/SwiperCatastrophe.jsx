@@ -6,6 +6,7 @@ import uuid from 'react-uuid'
 import { Link } from 'react-router-dom'
 import style from './SwiperCatastrophe.module.scss'
 import classNames from 'classnames'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const SwiperCatastrophe = () => {
   const [pages] = useState(1)
@@ -14,6 +15,8 @@ const SwiperCatastrophe = () => {
   return (
     <>
       <div className={classNames('wrap', style.blok__link)}>
+        <ScrollToTop />
+
         <Link
           to={`/movies/catastrophe`}
           className={classNames('title', style.link)}

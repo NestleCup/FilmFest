@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import PaginationFilms from '../PaginationFilms/PaginationFilms'
 import uuid from 'react-uuid'
 import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const JenreResult = () => {
   const { category } = useParams()
@@ -27,6 +28,7 @@ const JenreResult = () => {
 
   return (
     <>
+      <ScrollToTop />
       <div className="container position">
         {error ? (
           <div className="err">Oh no, there was an error</div>

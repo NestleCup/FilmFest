@@ -36,7 +36,7 @@ const Frames = () => {
         <div className={classNames('wrap', style.container)}>
           {slisedData.map((item) => (
             <div key={item.id} className={style.img}>
-              <Image height={390} src={item.imageUrl} alt="Кадр" />
+              <Image height={290} src={item.imageUrl} alt="Кадр" />
             </div>
           ))}
         </div>

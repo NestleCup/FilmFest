@@ -6,6 +6,7 @@ import { Rate } from 'antd'
 import { getRate } from '../../utils/helpers/getRate'
 import PaginationFilms from '../PaginationFilms/PaginationFilms'
 import { skeletonArray } from '../../utils/helpers/getSkeletonArray'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const RomanticFilms = () => {
   const [pages, setPages] = useState(1)
@@ -20,6 +21,7 @@ const RomanticFilms = () => {
   )
   return (
     <>
+      <ScrollToTop />
       <p className="title">Романтические фильмы</p>
       <div className="container">
         {error ? (

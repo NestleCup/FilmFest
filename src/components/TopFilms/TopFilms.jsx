@@ -24,6 +24,8 @@ export function TopFilms() {
   return (
     <>
       <div className="container">
+        <ScrollToTop />
+
         {error ? (
           <p className="error">Oh no, there was an error</p>
         ) : isLoading || isFetching ? (
@@ -34,7 +36,6 @@ export function TopFilms() {
         ) : (
           docs.map((item) => (
             <React.Fragment key={item.id}>
-              <ScrollToTop />
               <Link to={`/${item.kinopoiskId}`} className="film__link">
                 <LazyLoad height={200}>
                   <div className="film__poster">

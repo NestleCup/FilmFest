@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { Rate } from 'antd'
 import { getRate } from '../../utils/helpers/getRate'
 import PaginationFilms from '../PaginationFilms/PaginationFilms'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const CategoryResult = () => {
   const [pages, setPages] = useState(1)
@@ -20,6 +21,7 @@ const CategoryResult = () => {
   )
   return (
     <>
+      <ScrollToTop />
       <p className="title">Катастрофы</p>
       <div className="container">
         {error ? (
