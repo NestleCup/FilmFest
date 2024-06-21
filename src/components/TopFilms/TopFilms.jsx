@@ -36,16 +36,15 @@ export function TopFilms() {
         ) : (
           docs.map((item) => (
             <React.Fragment key={item.id}>
+              <ScrollToTop />
               <Link to={`/${item.kinopoiskId}`} className="film__link">
-                <LazyLoad height={200}>
-                  <div className="film__poster">
-                    <img
-                      src={item.posterUrl}
-                      className="film__poster-img"
-                      alt="Poster"
-                    />
-                  </div>
-                </LazyLoad>
+                <div className="film__poster">
+                  <img
+                    src={item.posterUrl}
+                    className="film__poster-img"
+                    alt="Poster"
+                  />
+                </div>
                 <div className="film__hover">
                   {item.ratingKinopoisk === null || (
                     <Rate

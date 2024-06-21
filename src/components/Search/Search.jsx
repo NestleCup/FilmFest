@@ -42,6 +42,7 @@ const Search = () => {
       {isError && <Input status="error" placeholder="Error" />}
       {data && (
         <Input.Search
+          size="large"
           placeholder="Название фильма..."
           onChange={onChange}
           allowClear

@@ -8,13 +8,13 @@ const Player = () => {
   const { kinopoiskId } = useParams()
 
   const { data } = useGetFilmsVideosByIdQuery(kinopoiskId)
-  const item = data?.items[1]?.url
+  const item = data?.items[0]?.url
 
   return data?.items?.length ? (
     <div className="wrap">
       <a href={item} target="_blank" rel="noreferrer">
         <div className={style.bg}>
-          <img src={player} alt="" />
+          <img src={player} alt="play" />
         </div>
       </a>
     </div>

@@ -34,7 +34,6 @@ const SwiperMain = () => {
         initialSlide={0}
         breakpoints={breakpoints}
         freeMode={true}
-        // mousewheel={true}
         modules={[FreeMode, Autoplay]}
         autoplay={{
           delay: 3500,

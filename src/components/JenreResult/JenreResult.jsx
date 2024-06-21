@@ -35,39 +35,41 @@ const JenreResult = () => {
         ) : isLoading ? (
           <div className="block">{skeletonArray}</div>
         ) : (
-          docs.map((item) => (
-            <React.Fragment key={item.id}>
-              <Link to={`/${item.kinopoiskId}`} className="film__link">
-                <div className="film__poster">
-                  <img
-                    src={item.posterUrl}
-                    className="film__poster-img "
-                    alt="Poster"
-                  ></img>
-                </div>
-                <div className="film__hover">
-                  {item.ratingKinopoisk === null || (
-                    <Rate
-                      allowHalf
-                      count={5}
-                      disabled={true}
-                      defaultValue={getRate(Math.floor(item.ratingKinopoisk))}
-                    />
-                  )}
-                  <div className="film__info">
-                    <div className="film-info__title">
-                      <p className="title">{item.nameRu}</p>
-                    </div>
-                    <div className="film-info__genre">
-                      <span className="genre">
-                        {item.genres.map((genre) => genre.genre).join(', ')}
-                      </span>
+          docs.map((item) =>
+            item?.nameRu ? (
+              <React.Fragment key={item.id}>
+                <Link to={`/${item.kinopoiskId}`} className="film__link">
+                  <div className="film__poster">
+                    <img
+                      src={item.posterUrl}
+                      className="film__poster-img "
+                      alt="Poster"
+                    ></img>
+                  </div>
+                  <div className="film__hover">
+                    {item.ratingKinopoisk === null || (
+                      <Rate
+                        allowHalf
+                        count={5}
+                        disabled={true}
+                        defaultValue={getRate(Math.floor(item.ratingKinopoisk))}
+                      />
+                    )}
+                    <div className="film__info">
+                      <div className="film-info__title">
+                        <p className="title">{item.nameRu}</p>
+                      </div>
+                      <div className="film-info__genre">
+                        <span className="genre">
+                          {item.genres.map((genre) => genre.genre).join(', ')}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </React.Fragment>
-          ))
+                </Link>
+              </React.Fragment>
+            ) : null
+          )
         )}
       </div>
       <div className="pagination">

@@ -3,6 +3,7 @@ import style from './Header.module.scss'
 import NavBar from './NavBar/NavBar'
 import Logo from '../Logo/Logo'
 import { Link } from 'react-router-dom'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const Header = () => {
   return (
@@ -11,6 +12,7 @@ const Header = () => {
         <div className={style.flex}>
           <Logo />
           <NavBar />
+          <ScrollToTop />
           <Link to="search">
             <div className={style.img}>
               <svg

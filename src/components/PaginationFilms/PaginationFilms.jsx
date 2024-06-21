@@ -22,6 +22,8 @@ const PaginationFilms = ({ setPages, pages, data }) => {
       >
         <div className="pagination">
           <Pagination
+            showLessItems="true"
+            size="large"
             onChange={onShowSizeChange}
             current={pages}
             total={totalPages}

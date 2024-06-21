@@ -171,8 +171,8 @@ a {
 }
 
 .skeleton-main {
-  height: 400px;
-  width: 25%;
+  height: 600px;
+  width: 30%;
   animation: animateBg 2s infinite linear;
   background-image: linear-gradient(
     90deg,
@@ -187,7 +187,7 @@ a {
 }
 
 .skeleton-swiper {
-  width: 250px;
+  width: 290px;
   animation: animateBg 2s infinite linear;
   background-image: linear-gradient(
     90deg,
@@ -199,7 +199,7 @@ a {
   );
   background-size: 300% 100%;
   border-radius: 7px;
-  height: 340px;
+  height: 390px;
 }
 @keyframes animateBg {
   0% {
@@ -208,4 +208,8 @@ a {
   100% {
     background-position: 100% 0;
   }
+}
+.link_supp {
+  text-decoration: underline;
+  font-size: 24px;
 }

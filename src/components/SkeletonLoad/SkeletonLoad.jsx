@@ -6,7 +6,7 @@ const SkeletonLoad = () => {
     <ConfigProvider
       theme={{
         token: {
-          controlHeight: '200',
+          controlHeight: '280',
         },
       }}
     >
